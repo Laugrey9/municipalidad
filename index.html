@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipalidad Provincial Modelo | Gobierno Local</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Poppins para un look más moderno y limpio) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Librería de Animaciones AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Configuración de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'muni-green': '#006837', 
+                        'muni-dark': '#004d29',
+                        'muni-accent': '#c1272d', 
+                        'muni-gold': '#d4af37',
+                        'gob-blue': '#2E58A6', 
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.15)',
+                        'glow': '0 0 15px rgba(0, 104, 55, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados y correcciones visuales */
+        html { scroll-behavior: smooth; }
+        
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #006837; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #004d29; }
+
+        /* Efecto Glassmorphism para el header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Corrección de Dropdowns y Animaciones */
+        .group:hover .group-hover\:block {
+            display: block;
+            animation: menuFadeIn 0.3s ease-out forwards;
+        }
+
+        /* Animación personalizada para menús */
+        @keyframes menuFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hover cards */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* SOLUCIÓN SUBMENÚS: 
+           Usamos padding-left en lugar de margin-left para crear un puente seguro 
+           para el mouse.
+        */
+        .submenu-adjust {
+            left: 100%;
+            top: -10px; /* Alineación superior */
+            padding-left: 0.5rem; /* Puente invisible */
+            margin-left: 0; 
+        }
+
+        /* Submenú hacia la izquierda (para NORMATIVIDAD) */
+        .submenu-adjust-left {
+            right: 100%;
+            top: -10px;
+            padding-right: 0.5rem;
+            margin-left: 0;
+        }
+
+        /* Utilidad de texto */
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Centrado absoluto vertical */
+        .center-absolute {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- BARRA GOB.PE -->
+    <div class="bg-gob-blue text-white text-xs py-1 relative z-[60]">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <span class="font-bold tracking-wide">Gobierno del Perú</span>
+            <div class="flex gap-4">
+                <a href="#" class="hover:underline opacity-90 hover:opacity-100 transition">El Estado</a>
+                <a href="#" class="hover:underline opacity-90 hover:opacity-100 transition">Trámites y Servicios</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BARRA DE CONTACTO SUPERIOR -->
+    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-green-800 relative z-[60]">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span class="flex items-center gap-2"><i class="fas fa-phone-alt text-muni-gold animate-pulse"></i> (01) 123-4567</span>
+                <span class="flex items-center gap-2"><i class="fas fa-envelope text-muni-gold"></i> contacto@munimodelo.gob.pe</span>
+            </div>
+            <div class="flex space-x-4 items-center">
+                <span class="text-gray-300 text-xs mr-2 font-medium uppercase">Síguenos:</span>
+                <div class="flex gap-3">
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL (Sticky y Glassmorphism) -->
+    <header class="glass-header sticky top-0 z-50 shadow-sm transition-all duration-300" id="main-header">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group min-w-max">
+                    <div class="w-12 h-12 bg-gradient-to-br from-muni-green to-muni-dark rounded-lg flex items-center justify-center text-white text-2xl shadow-lg group-hover:rotate-6 transition duration-300">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-lg md:text-xl font-bold text-gray-800 leading-none group-hover:text-muni-green transition">MUNICIPALIDAD <br><span class="text-muni-green">PROVINCIAL</span></h1>
+                    </div>
+                </a>
+
+                <!-- Navegación Desktop (CENTRADA) -->
+                <!-- SOLUCIÓN MENU: Se agrega un contenedor wrapper con pt-3 para crear el puente invisible -->
+                <nav class="hidden md:flex flex-1 justify-end lg:justify-center items-center space-x-1 ml-4 lg:ml-0">
+                    
+                    <!-- Dropdown: La Municipalidad -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            MUNICIPALIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Wrapper Invisible (Puente) -->
+                        <div class="absolute top-full left-0 pt-3 w-64 hidden group-hover:block z-50">
+                            <!-- Contenido Visual -->
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
+                                <a href="#alcalde" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Mision Y Vision
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-users"></i></span> Direccion De La Municipalidad
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Servicios -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            SERVICIOS <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Wrapper Invisible -->
+                        <div class="absolute top-full left-0 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#servicios" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
+                                </a>
+                                
+                                <!-- Submenú Anidado -->
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-green text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-book w-6 text-muni-green"></i> Libro De Reclamaciones</span>
+                                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                                    </button>
+                                    <!-- Submenú flotante -->
+                                    <div class="absolute submenu-adjust w-60 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-green">
+                                            <a href="#" class="block px-4 py-3 hover:bg-gray-50 text-sm text-gray-600 hover:text-muni-green transition">Administracion De Reclamos</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop w-6 text-muni-green"></i> Registro de Visitas
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-book-open w-6 text-muni-green"></i> Mesa de Partes Virtual
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: NORMATIVIDAD -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            NORMATIVIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Wrapper Invisible (Centrado) -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-accent pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Documentos
+                                </a>
+
+                                <!-- Submenú Planes -->
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-chart-line w-6 text-muni-accent"></i> Planes Y Politicas</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent">
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan Estrategico Institucional-PEI</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan Operativo Institucional-POI</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan De Gobierno Digital</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submenú Instrumentos -->
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-file-contract w-6 text-muni-accent"></i> Instrumentos Gestión</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-56 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Clasificador De Cargos</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">POI</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">PIA</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">ROF</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">MOF</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">CAP</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">RASA Y CIEMA</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">MAPRO</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">TUPA</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">RIT</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submenú Normas -->
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-gavel w-6 text-muni-accent"></i> Normas Emitidas</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Ordenanzas Municipales</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Resoluciones de Alcaldia</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Decretos de Alcaldía</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-exclamation-circle w-6 text-muni-accent"></i> Recomendaciones Auditoria
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Ciudad -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            CIUDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Wrapper Invisible -->
+                        <div class="absolute top-full right-0 pt-3 w-64 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-gold pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#turismo" class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-camera w-6 text-muni-gold"></i> Historia De Carhuamayo
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-music w-6 text-muni-gold"></i> Himno De Carhuamayo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Transparencia -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            TRANSPARENCIA <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <!-- Wrapper Invisible -->
+                        <div class="absolute top-full right-0 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-gob-blue pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop-code w-6 text-gob-blue"></i> Portal De Transparencia
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> Agenda Institucional
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-bullhorn w-6 text-gob-blue"></i> Denunciar Actos De Corrupción
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-green-50 rounded-full transition">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 absolute w-full shadow-2xl overflow-y-auto max-h-[80vh] z-50 animate-dropdown">
+            <a href="#" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-home mr-2 text-muni-green"></i> Inicio</a>
+            
+            <div class="border-b bg-gray-50">
+                <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Gestión</p>
+                <a href="#alcalde" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">El Alcalde</a>
+                <a href="#" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Documentos de Gestión</a>
+            </div>
+
+            <div class="border-b bg-gray-50">
+                <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Servicios</p>
+                <a href="#servicios" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Trámites y TUPA</a>
+                <a href="#" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Pagos en Línea</a>
+            </div>
+
+            <a href="#noticias" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="far fa-newspaper mr-2 text-muni-green"></i> Noticias</a>
+            <a href="#turismo" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-map-marked-alt mr-2 text-muni-green"></i> Turismo</a>
+            
+            <div class="p-4 bg-white">
+                <button class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg transform active:scale-95">
+                    <i class="fas fa-laptop-file mr-2"></i> Mesa de Partes Virtual
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Slider) -->
+    <section class="relative h-[600px] md:h-[750px] overflow-hidden bg-gray-900 group">
+        <!-- Imagen de Fondo -->
+        <div id="hero-slider" class="absolute inset-0 transition-opacity duration-1000 ease-in-out">
+            <img id="hero-image" src="https://images.unsplash.com/photo-1596395819057-d37754eb5d5a?q=80&w=2072&auto=format&fit=crop" class="w-full h-full object-cover opacity-100 transition-transform duration-[8000ms] ease-linear transform scale-100 hover:scale-110">
+        </div>
+        
+        <!-- Overlay Gradiente -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10 opacity-90"></div>
+        
+        <!-- Contenido (CENTRADO PERFECTAMENTE) -->
+        <div class="center-absolute z-20 text-center px-4 w-full max-w-5xl">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <span class="bg-muni-gold/90 backdrop-blur-sm text-white px-6 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-[0.2em] shadow-lg mb-6 inline-block border border-white/20">
+                    Gestión 2023 - 2026
+                </span>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl leading-tight tracking-tight">
+                    Construyendo el futuro <br> de nuestra <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Provincia</span>
+                </h2>
+                <p class="text-lg md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
+                    Compromiso, transparencia y desarrollo sostenible para todos nuestros ciudadanos.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button class="group bg-muni-green hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-glow hover:shadow-green-500/50 hover:-translate-y-1 ring-4 ring-green-900/30 flex items-center">
+                        <i class="fas fa-hard-hat mr-3 group-hover:rotate-12 transition"></i> Ver Obras
+                    </button>
+                    <button class="group bg-white/10 backdrop-blur-md hover:bg-white text-white hover:text-muni-dark px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 border border-white/30 hover:shadow-lg hover:-translate-y-1 flex items-center">
+                        <i class="fas fa-file-invoice-dollar mr-3 group-hover:text-muni-gold transition"></i> Pagos en Línea
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- BARRA DE ACCESOS RÁPIDOS (Tipo Gob.pe) -->
+    <section class="relative z-30 -mt-20 px-4 mb-16">
+        <div class="container mx-auto">
+            <div class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl p-6 md:p-10 grid grid-cols-2 md:grid-cols-4 gap-6 border-b-4 border-muni-green transform hover:scale-[1.01] transition duration-500" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Acceso 1 -->
+                <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-blue-50 transition border border-gray-100 hover:border-blue-200 group text-center h-full shadow-sm hover:shadow-md">
+                    <div class="w-14 h-14 mb-4 relative">
+                        <div class="absolute inset-0 bg-blue-100 rounded-full scale-0 group-hover:scale-100 transition duration-300"></div>
+                        <svg class="w-full h-full text-gob-blue relative z-10 group-hover:scale-110 transition duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-gob-blue transition">Portal de Transparencia</h3>
+                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-blue-600">Acceso a la información pública</p>
+                </a>
+
+                <!-- Acceso 2 -->
+                <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-green-50 transition border border-gray-100 hover:border-green-200 group text-center h-full shadow-sm hover:shadow-md">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4 group-hover:bg-muni-green group-hover:text-white transition duration-300 shadow-inner">
+                        <i class="fas fa-file-invoice text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-muni-green transition">Mesa de Partes</h3>
+                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-green-600">Trámites virtuales 24/7</p>
+                </a>
+
+                <!-- Acceso 3 -->
+                <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-yellow-50 transition border border-gray-100 hover:border-yellow-200 group text-center h-full shadow-sm hover:shadow-md">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-4 group-hover:bg-muni-gold group-hover:text-white transition duration-300 shadow-inner">
+                        <i class="fas fa-book text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-muni-gold transition">Libro de Reclamaciones</h3>
+                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-yellow-600">Atención al ciudadano</p>
+                </a>
+
+                <!-- Acceso 4 -->
+                <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-red-50 transition border border-gray-100 hover:border-red-200 group text-center h-full shadow-sm hover:shadow-md">
+                    <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-4 group-hover:bg-muni-accent group-hover:text-white transition duration-300 shadow-inner">
+                        <i class="fas fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-muni-accent transition">Agenda Municipal</h3>
+                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-red-600">Eventos y actividades</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MENSAJE DEL ALCALDE -->
+    <section id="alcalde" class="py-16 md:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                
+                <!-- Imagen con diseño -->
+                <div class="w-full md:w-1/2 relative group" data-aos="fade-right">
+                    <div class="absolute top-10 -left-10 w-full h-full border-2 border-muni-green/20 rounded-2xl z-0 transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition duration-500"></div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full z-0 opacity-20 blur-2xl animate-pulse"></div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop" alt="Alcalde Provincial" class="relative z-10 rounded-2xl shadow-2xl w-full h-[500px] object-cover object-top border-4 border-white transition transform group-hover:scale-[1.02]">
+                    
+                    <!-- Etiqueta Flotante -->
+                    <div class="absolute bottom-8 -right-4 md:-right-8 z-20 bg-white px-8 py-5 rounded-xl shadow-xl border-l-8 border-muni-green animate-dropdown">
+                        <p class="font-bold text-xl text-gray-800">Juan Pérez Modelo</p>
+                        <p class="text-sm text-muni-green font-semibold uppercase tracking-wider mt-1">Alcalde Provincial</p>
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="w-12 h-1 bg-muni-green rounded-full"></span>
+                        <span class="text-muni-green font-bold uppercase tracking-widest text-sm">Despacho de Alcaldía</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">Trabajamos juntos por el <br> <span class="text-muni-green relative inline-block">desarrollo<span class="absolute bottom-1 left-0 w-full h-3 bg-green-200/50 -z-10"></span></span> de tu ciudad</h2>
+                    
+                    <div class="bg-gray-50 border-l-4 border-muni-gold p-8 mb-8 italic text-gray-600 rounded-r-xl shadow-sm">
+                        <i class="fas fa-quote-left text-muni-gold/30 text-4xl mb-2 block"></i>
+                        <p class="relative z-10 text-lg">"Nuestra gestión se caracteriza por la transparencia y el trabajo constante. Cada obra es un paso hacia adelante para mejorar la calidad de vida de nuestros vecinos."</p>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-10 leading-relaxed text-justify text-lg">
+                        Bienvenidos al portal oficial. Aquí encontrarán herramientas digitales para facilitar sus trámites y mantenerse informados sobre los avances de nuestra provincia. Mi compromiso es con ustedes.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition font-semibold text-sm shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center">
+                            <i class="fas fa-file-alt mr-2"></i> Hoja de Vida
+                        </a>
+                        <a href="#" class="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 hover:border-gray-400 transition font-semibold text-sm flex items-center">
+                            <i class="fas fa-envelope mr-2"></i> Escribir al Alcalde
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRÁMITES Y SERVICIOS -->
+    <section id="servicios" class="py-24 bg-gray-50 relative overflow-hidden">
+        <!-- Fondo decorativo SVG -->
+        <svg class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="#006837" />
+        </svg>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-muni-green font-bold uppercase tracking-wider text-sm bg-green-100 px-4 py-1 rounded-full">Atención al Ciudadano</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">Trámites y Servicios</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-muni-gold to-yellow-300 mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">Realiza tus gestiones de manera rápida y sencilla sin salir de casa.</p>
+            </div>
+
+            <!-- Grid de Servicios -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Card Template -->
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-blue-600 transition">Registro Civil</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Inscripción de nacimientos, matrimonios y defunciones.</p>
+                    <span class="inline-flex items-center text-blue-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Ver requisitos <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-muni-green transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    <div class="w-20 h-20 bg-green-50 text-muni-green rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-muni-green group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-muni-green transition">Tributación</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Pago de arbitrios, impuesto predial y alcabala.</p>
+                    <span class="inline-flex items-center text-muni-green text-sm font-bold mt-auto group-hover:translate-x-2 transition">Pagar aquí <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    <div class="w-20 h-20 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-muni-gold group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-muni-gold transition">Licencias</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Permisos de construcción, conformidad de obra y catastro.</p>
+                    <span class="inline-flex items-center text-yellow-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Iniciar trámite <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-red-500 transform scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    <div class="w-20 h-20 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-muni-accent group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-muni-accent transition">Comercio</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Apertura de negocios, defensa civil y salubridad.</p>
+                    <span class="inline-flex items-center text-red-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Más información <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <!-- Segunda fila -->
+                 <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-purple-600 transition">Social</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Vaso de Leche, SISFOH, OMAPED y programas de ayuda.</p>
+                    <span class="inline-flex items-center text-purple-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Consultar <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-orange-600 group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-orange-600 transition">Limpieza</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Horarios de recolección y segregación de residuos.</p>
+                    <span class="inline-flex items-center text-orange-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Ver rutas <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-indigo-600 transition">Seguridad</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Serenazgo, videovigilancia y números de emergencia.</p>
+                    <span class="inline-flex items-center text-indigo-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Reportar <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-gray-50 text-gray-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-gray-800 group-hover:text-white transition duration-300 shadow-inner group-hover:rotate-6 group-hover:shadow-lg">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-xl mb-3 group-hover:text-gray-900 transition">TUPA</h4>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">Texto Único de Procedimientos Administrativos.</p>
+                    <span class="inline-flex items-center text-gray-600 text-sm font-bold mt-auto group-hover:translate-x-2 transition">Descargar <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+            </div>
+
+            <div class="text-center mt-16" data-aos="fade-in">
+                <a href="#" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-muni-green hover:bg-green-700 transition shadow-lg hover:shadow-2xl hover:-translate-y-1">
+                    Ver todos los servicios
+                    <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOTICIAS -->
+    <section id="noticias" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-end mb-12" data-aos="fade-right">
+                <div>
+                    <span class="text-muni-accent font-bold uppercase tracking-wider text-sm bg-red-50 px-3 py-1 rounded">Actualidad</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2">Noticias Recientes</h2>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center text-muni-green font-bold hover:text-green-800 transition">Ver todas <i class="fas fa-arrow-right ml-2 bg-green-100 p-2 rounded-full"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Noticia Principal -->
+                <article class="md:col-span-2 group cursor-pointer relative rounded-3xl overflow-hidden shadow-2xl h-[400px] md:h-[500px]" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1590240902896-1c255e4277b4?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 md:p-10 transform transition duration-500 group-hover:-translate-y-2">
+                        <span class="bg-muni-green text-white text-xs font-bold px-3 py-1 rounded mb-4 inline-block tracking-wide">OBRAS PÚBLICAS</span>
+                        <h3 class="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight group-hover:text-green-300 transition">Alcalde supervisa avance del 90% en la construcción del nuevo Hospital Provincial</h3>
+                        <p class="text-gray-200 text-sm md:text-lg line-clamp-2 opacity-90">La moderna infraestructura beneficiará a más de 50 mil habitantes y contará con equipamiento de última generación.</p>
+                    </div>
+                </article>
+
+                <!-- Lista Lateral -->
+                <div class="flex flex-col gap-6" data-aos="fade-left" data-aos-delay="200">
+                    
+                    <!-- Item -->
+                    <article class="flex gap-4 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition group cursor-pointer border border-gray-100 p-3 h-full items-center transform hover:-translate-x-2">
+                        <div class="w-1/3 h-24 rounded-xl overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 flex flex-col justify-center">
+                            <span class="text-xs text-gray-500 mb-2 font-medium flex items-center"><i class="far fa-calendar-alt mr-1 text-muni-green"></i> 15 Oct, 2023</span>
+                            <h4 class="font-bold text-gray-800 leading-snug text-sm group-hover:text-muni-green transition">Campaña de reciclaje "Eco-Trueque" recolectó 2 toneladas</h4>
+                        </div>
+                    </article>
+
+                    <!-- Item -->
+                    <article class="flex gap-4 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition group cursor-pointer border border-gray-100 p-3 h-full items-center transform hover:-translate-x-2">
+                        <div class="w-1/3 h-24 rounded-xl overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1544531679-3733076166b6?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 flex flex-col justify-center">
+                            <span class="text-xs text-gray-500 mb-2 font-medium flex items-center"><i class="far fa-calendar-alt mr-1 text-muni-green"></i> 14 Oct, 2023</span>
+                            <h4 class="font-bold text-gray-800 leading-snug text-sm group-hover:text-muni-green transition">Capacitación gratuita a emprendedores locales</h4>
+                        </div>
+                    </article>
+
+                    <!-- Item -->
+                    <article class="flex gap-4 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition group cursor-pointer border border-gray-100 p-3 h-full items-center transform hover:-translate-x-2">
+                        <div class="w-1/3 h-24 rounded-xl overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="w-2/3 flex flex-col justify-center">
+                            <span class="text-xs text-gray-500 mb-2 font-medium flex items-center"><i class="far fa-calendar-alt mr-1 text-muni-green"></i> 12 Oct, 2023</span>
+                            <h4 class="font-bold text-gray-800 leading-snug text-sm group-hover:text-muni-green transition">Sesión Solemne por el 150° Aniversario de la Provincia</h4>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 md:hidden">
+                <button class="w-full border-2 border-muni-green text-muni-green px-6 py-3 rounded-full font-bold hover:bg-muni-green hover:text-white transition">Ver todas las noticias</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TURISMO -->
+    <section id="turismo" class="py-24 bg-muni-dark text-white relative overflow-hidden">
+        <!-- Partículas de fondo (simuladas) -->
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 animate-pulse"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16" data-aos="fade-up">
+                <div class="mb-8 md:mb-0 text-center md:text-left">
+                    <span class="text-muni-gold font-bold uppercase tracking-wider text-sm">Nuestra Tierra</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-2">Descubre la Provincia</h2>
+                    <p class="text-gray-300 mt-4 max-w-xl text-lg">Historia, naturaleza y cultura viva. Ven y conoce los encantos que tenemos para ofrecer al mundo.</p>
+                </div>
+                <button class="bg-white text-muni-dark hover:bg-muni-gold hover:text-white px-8 py-3 rounded-full font-bold transition shadow-lg transform hover:scale-105">
+                    Portal de Turismo
+                </button>
+            </div>
+            
+            <!-- Grid de Turismo -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="relative group h-96 rounded-3xl overflow-hidden cursor-pointer shadow-2xl" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                            <span class="text-muni-gold text-xs font-bold uppercase tracking-widest mb-2 block">Naturaleza</span>
+                            <h3 class="text-2xl font-bold mb-2 text-white">Laguna Azul</h3>
+                            <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition duration-500 delay-100">Un espejo de agua rodeado de mitos y biodiversidad única en la región.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="relative group h-96 rounded-3xl overflow-hidden cursor-pointer shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                            <span class="text-muni-gold text-xs font-bold uppercase tracking-widest mb-2 block">Historia</span>
+                            <h3 class="text-2xl font-bold mb-2 text-white">Plaza de Armas</h3>
+                            <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition duration-500 delay-100">El corazón de nuestra ciudad, donde la arquitectura colonial se encuentra con la modernidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative group h-96 rounded-3xl overflow-hidden cursor-pointer shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1581403061730-1ce403ebf836?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 filter brightness-75 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                            <span class="text-muni-gold text-xs font-bold uppercase tracking-widest mb-2 block">Arqueología</span>
+                            <h3 class="text-2xl font-bold mb-2 text-white">Ruinas Ancestrales</h3>
+                            <p class="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition duration-500 delay-100">Testimonio de piedra de nuestros antepasados pre-incas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-gray-900 text-gray-300 pt-20 pb-10 border-t-8 border-muni-green">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            
+            <!-- Columna 1 -->
+            <div data-aos="fade-up">
+                <div class="flex items-center space-x-3 mb-8 text-white">
+                    <div class="w-12 h-12 bg-gradient-to-br from-muni-green to-green-700 rounded-lg flex items-center justify-center shadow-lg"><i class="fas fa-landmark text-2xl"></i></div>
+                    <span class="font-bold text-2xl leading-tight tracking-tight">MUNI<br>MODELO</span>
+                </div>
+                <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                    Institución pública comprometida con el desarrollo integral, sostenible y armónico de la provincia, brindando servicios de calidad.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Columna 2 -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Enlaces de Interés</h3>
+                <ul class="space-y-4 text-sm">
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Mesa de Partes Virtual</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Portal de Transparencia</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Convocatorias CAS</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Ordenanzas Municipales</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Directorio de Funcionarios</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3 -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Contáctanos</h3>
+                <ul class="space-y-6 text-sm">
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-map-marker-alt"></i></div>
+                        <span>Jr. Ayacucho 123, Plaza de Armas,<br>Provincia, Perú</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-phone-alt"></i></div>
+                        <span>(01) 123-4567 / (01) 987-6543</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-envelope"></i></div>
+                        <span>mesadepartes@munimodelo.gob.pe</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Columna 4 -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Atención al Vecino</h3>
+                <p class="text-sm mb-4 text-gray-400">Horario de Oficina:</p>
+                <div class="bg-gray-800 p-4 rounded-lg mb-6 border-l-4 border-muni-gold">
+                    <p class="text-white font-bold text-sm">Lunes a Viernes</p>
+                    <p class="text-gray-400 text-xs mt-1">8:00 AM - 1:00 PM</p>
+                    <p class="text-gray-400 text-xs">2:30 PM - 5:00 PM</p>
+                </div>
+                
+                <div class="mt-4 p-5 bg-gradient-to-r from-red-900 to-red-800 rounded-xl border border-red-700 shadow-lg transform hover:scale-105 transition duration-300">
+                    <p class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center"><i class="fas fa-exclamation-triangle mr-2 animate-pulse"></i> Emergencias (24h)</p>
+                    <p class="text-3xl font-black text-white tracking-widest">0-800-123</p>
+                    <p class="text-xs text-red-200 mt-1">Seguridad Ciudadana</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2024 Municipalidad Provincial. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-white transition">Políticas de Privacidad</a>
+                    <a href="#" class="hover:text-white transition">Términos de Uso</a>
+                    <a href="#" class="hover:text-white transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Animaciones AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            once: true, // La animación solo pasa una vez
+            offset: 100, // Empieza la animación un poco antes
+            duration: 800, // Duración de la animación
+            easing: 'ease-out-cubic',
+        });
+
+        // Lógica del Menú Móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            // Cambiar icono
+            const icon = btn.querySelector('i');
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Cerrar menú móvil al hacer click en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.querySelector('i').classList.remove('fa-times');
+                btn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Slider con efecto Fade Mejorado
+        const heroImage = document.getElementById('hero-image');
+        const heroSlider = document.getElementById('hero-slider');
+        const images = [
+            'https://images.unsplash.com/photo-1596395819057-d37754eb5d5a?q=80&w=2072&auto=format&fit=crop', // Plaza
+            'https://images.unsplash.com/photo-1565158569600-84346eb4a034?auto=format&fit=crop&q=80&w=2000', // Paisaje
+            'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=2000', // Naturaleza
+            'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000'  // Arquitectura
+        ];
+        let currentImageIndex = 0;
+
+        function changeHeroImage() {
+            heroSlider.style.opacity = 0;
+            
+            setTimeout(() => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                heroImage.src = images[currentImageIndex];
+                
+                heroImage.onload = () => {
+                    heroSlider.style.opacity = 1;
+                }
+            }, 1000);
+        }
+
+        setInterval(changeHeroImage, 6000);
+
+        // Header Sticky Avanzado
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
