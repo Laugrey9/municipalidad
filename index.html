@@ -115,18 +115,7 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen overflow-x-hidden">
-
-    <!-- BARRA GOB.PE -->
-    <div class="bg-gob-blue text-white text-xs py-1 relative z-[60]">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <span class="font-bold tracking-wide">Gobierno del Perú</span>
-            <div class="flex gap-4">
-                <a href="#" class="hover:underline opacity-90 hover:opacity-100 transition">El Estado</a>
-                <a href="#" class="hover:underline opacity-90 hover:opacity-100 transition">Trámites y Servicios</a>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- BARRA DE CONTACTO SUPERIOR -->
     <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-green-800 relative z-[60]">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -153,11 +142,9 @@
                 
                 <!-- Logo -->
                 <a href="#" class="flex items-center space-x-3 group min-w-max">
-                    <div class="w-12 h-12 bg-gradient-to-br from-muni-green to-muni-dark rounded-lg flex items-center justify-center text-white text-2xl shadow-lg group-hover:rotate-6 transition duration-300">
-                        <i class="fas fa-landmark"></i>
-                    </div>
+                    
                     <div class="flex flex-col">
-                        <h1 class="text-lg md:text-xl font-bold text-gray-800 leading-none group-hover:text-muni-green transition">MUNICIPALIDAD <br><span class="text-muni-green">PROVINCIAL</span></h1>
+                        <img src="img/carhuamayo logo.png" class="h-12 w-auto object-contain">
                     </div>
                 </a>
 
@@ -268,6 +255,20 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Submenú Presupuesto -->
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-gavel w-6 text-muni-accent"></i> Presupuesto</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
+                                            <a href="https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_info_finan.aspx?id_entidad=11272&id_tema=19&ver=" target="_blank" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Información Presupuestal</a>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 
                                 <!-- Submenú Normas -->
                                 <div class="relative group/libro">
@@ -369,7 +370,7 @@
     <section class="relative h-[600px] md:h-[750px] overflow-hidden bg-gray-900 group">
         <!-- Imagen de Fondo -->
         <div id="hero-slider" class="absolute inset-0 transition-opacity duration-1000 ease-in-out">
-            <img id="hero-image" src="https://images.unsplash.com/photo-1596395819057-d37754eb5d5a?q=80&w=2072&auto=format&fit=crop" class="w-full h-full object-cover opacity-100 transition-transform duration-[8000ms] ease-linear transform scale-100 hover:scale-110">
+            <img id="hero-image" src="img/img1.jpg" class="w-full h-full object-cover opacity-100 transition-transform duration-[8000ms] ease-linear transform scale-100 hover:scale-110">
         </div>
         
         <!-- Overlay Gradiente -->
@@ -411,92 +412,29 @@
                 
                 <!-- Acceso 1 -->
                 <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-blue-50 transition border border-gray-100 hover:border-blue-200 group text-center h-full shadow-sm hover:shadow-md">
-                    <div class="w-14 h-14 mb-4 relative">
-                        <div class="absolute inset-0 bg-blue-100 rounded-full scale-0 group-hover:scale-100 transition duration-300"></div>
-                        <svg class="w-full h-full text-gob-blue relative z-10 group-hover:scale-110 transition duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-gob-blue transition">Portal de Transparencia</h3>
-                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-blue-600">Acceso a la información pública</p>
+                    <img src="img/portal-transparencia.png">
                 </a>
 
                 <!-- Acceso 2 -->
                 <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-green-50 transition border border-gray-100 hover:border-green-200 group text-center h-full shadow-sm hover:shadow-md">
-                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4 group-hover:bg-muni-green group-hover:text-white transition duration-300 shadow-inner">
-                        <i class="fas fa-file-invoice text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-muni-green transition">Mesa de Partes</h3>
-                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-green-600">Trámites virtuales 24/7</p>
+                    <img src="img/mesa_de_partes-removebg-preview.png">
                 </a>
 
                 <!-- Acceso 3 -->
                 <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-yellow-50 transition border border-gray-100 hover:border-yellow-200 group text-center h-full shadow-sm hover:shadow-md">
-                    <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-4 group-hover:bg-muni-gold group-hover:text-white transition duration-300 shadow-inner">
-                        <i class="fas fa-book text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-muni-gold transition">Libro de Reclamaciones</h3>
-                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-yellow-600">Atención al ciudadano</p>
+                    <img src="img/librodr.png">
                 </a>
 
                 <!-- Acceso 4 -->
                 <a href="#" class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-red-50 transition border border-gray-100 hover:border-red-200 group text-center h-full shadow-sm hover:shadow-md">
-                    <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-4 group-hover:bg-muni-accent group-hover:text-white transition duration-300 shadow-inner">
-                        <i class="fas fa-calendar-check text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-muni-accent transition">Agenda Municipal</h3>
-                    <p class="text-xs text-gray-500 mt-2 hidden md:block group-hover:text-red-600">Eventos y actividades</p>
+                    <img src="img/agendam.png">
                 </a>
 
             </div>
         </div>
     </section>
 
-    <!-- MENSAJE DEL ALCALDE -->
-    <section id="alcalde" class="py-16 md:py-24 bg-white overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                
-                <!-- Imagen con diseño -->
-                <div class="w-full md:w-1/2 relative group" data-aos="fade-right">
-                    <div class="absolute top-10 -left-10 w-full h-full border-2 border-muni-green/20 rounded-2xl z-0 transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition duration-500"></div>
-                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full z-0 opacity-20 blur-2xl animate-pulse"></div>
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop" alt="Alcalde Provincial" class="relative z-10 rounded-2xl shadow-2xl w-full h-[500px] object-cover object-top border-4 border-white transition transform group-hover:scale-[1.02]">
-                    
-                    <!-- Etiqueta Flotante -->
-                    <div class="absolute bottom-8 -right-4 md:-right-8 z-20 bg-white px-8 py-5 rounded-xl shadow-xl border-l-8 border-muni-green animate-dropdown">
-                        <p class="font-bold text-xl text-gray-800">Juan Pérez Modelo</p>
-                        <p class="text-sm text-muni-green font-semibold uppercase tracking-wider mt-1">Alcalde Provincial</p>
-                    </div>
-                </div>
-
-                <!-- Texto -->
-                <div class="w-full md:w-1/2" data-aos="fade-left">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="w-12 h-1 bg-muni-green rounded-full"></span>
-                        <span class="text-muni-green font-bold uppercase tracking-widest text-sm">Despacho de Alcaldía</span>
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">Trabajamos juntos por el <br> <span class="text-muni-green relative inline-block">desarrollo<span class="absolute bottom-1 left-0 w-full h-3 bg-green-200/50 -z-10"></span></span> de tu ciudad</h2>
-                    
-                    <div class="bg-gray-50 border-l-4 border-muni-gold p-8 mb-8 italic text-gray-600 rounded-r-xl shadow-sm">
-                        <i class="fas fa-quote-left text-muni-gold/30 text-4xl mb-2 block"></i>
-                        <p class="relative z-10 text-lg">"Nuestra gestión se caracteriza por la transparencia y el trabajo constante. Cada obra es un paso hacia adelante para mejorar la calidad de vida de nuestros vecinos."</p>
-                    </div>
-                    
-                    <p class="text-gray-600 mb-10 leading-relaxed text-justify text-lg">
-                        Bienvenidos al portal oficial. Aquí encontrarán herramientas digitales para facilitar sus trámites y mantenerse informados sobre los avances de nuestra provincia. Mi compromiso es con ustedes.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#" class="px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition font-semibold text-sm shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center">
-                            <i class="fas fa-file-alt mr-2"></i> Hoja de Vida
-                        </a>
-                        <a href="#" class="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 hover:border-gray-400 transition font-semibold text-sm flex items-center">
-                            <i class="fas fa-envelope mr-2"></i> Escribir al Alcalde
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- TRÁMITES Y SERVICIOS -->
     <section id="servicios" class="py-24 bg-gray-50 relative overflow-hidden">
@@ -859,10 +797,10 @@
         const heroImage = document.getElementById('hero-image');
         const heroSlider = document.getElementById('hero-slider');
         const images = [
-            'https://images.unsplash.com/photo-1596395819057-d37754eb5d5a?q=80&w=2072&auto=format&fit=crop', // Plaza
-            'https://images.unsplash.com/photo-1565158569600-84346eb4a034?auto=format&fit=crop&q=80&w=2000', // Paisaje
-            'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=2000', // Naturaleza
-            'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000'  // Arquitectura
+            'img/img1.jpg', // Plaza
+            'img/img4.jpg'// Paisaje
+             // Naturaleza
+             // Arquitectura
         ];
         let currentImageIndex = 0;
 
@@ -876,7 +814,7 @@
                 heroImage.onload = () => {
                     heroSlider.style.opacity = 1;
                 }
-            }, 1000);
+            }, 500);
         }
 
         setInterval(changeHeroImage, 6000);
