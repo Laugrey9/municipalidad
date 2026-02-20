@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcaldía | Municipalidad Distrital de Carhuamayo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Librería de Animaciones AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Configuración de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'muni-green': '#006837', 
+                        'muni-dark': '#004d29',
+                        'muni-accent': '#c1272d', 
+                        'muni-gold': '#d4af37',
+                        'gob-blue': '#2E58A6', 
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.15)',
+                        'glow': '0 0 15px rgba(0, 104, 55, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #006837; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #004d29; }
+
+        /* Glassmorphism */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Dropdowns */
+        .group:hover .group-hover\:block {
+            display: block;
+            animation: menuFadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes menuFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Service Cards */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Submenú ajuste */
+        .submenu-adjust {
+            left: 100%;
+            top: -10px;
+            padding-left: 0.5rem;
+            margin-left: 0; 
+        }
+
+        .submenu-adjust-left {
+            right: 100%;
+            top: -10px;
+            padding-right: 0.5rem;
+            margin-left: 0;
+        }
+
+        /* Efecto hero */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,104,55,0.95) 0%, rgba(0,77,41,0.9) 100%);
+        }
+
+        /* Tarjeta alcalde */
+        .alcalde-card {
+            transition: all 0.4s ease;
+        }
+        .alcalde-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Logros */
+        .logro-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .logro-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #006837;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        .logro-item:hover::before {
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen overflow-x-hidden">
+    
+    <!-- BARRA DE CONTACTO SUPERIOR -->
+    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-green-800 relative z-[60]">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span class="flex items-center gap-2"><i class="fas fa-phone-alt text-muni-gold animate-pulse"></i> (01) 123-4567</span>
+                <span class="flex items-center gap-2"><i class="fas fa-envelope text-muni-gold"></i> contacto@municarhuamayogob.pe</span>
+            </div>
+            <div class="flex space-x-4 items-center">
+                <span class="text-gray-300 text-xs mr-2 font-medium uppercase">Síguenos:</span>
+                <div class="flex gap-3">
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header class="glass-header sticky top-0 z-50 shadow-sm transition-all duration-300" id="main-header">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group min-w-max">
+                    <div class="flex flex-col">
+                        <img src="img/carhuamayo logo.png" class="h-12 w-auto object-contain">
+                    </div>
+                </a>
+
+                <!-- Navegación Desktop -->
+                <nav class="hidden md:flex flex-1 justify-end lg:justify-center items-center space-x-1 ml-4 lg:ml-0">
+                    <!-- Dropdown: La Municipalidad -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            MUNICIPALIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 pt-3 w-64 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
+                                <a href="alcaldia.html" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Alcaldia
+                                </a>
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-bullseye"></i></span> Mision Y Vision
+                                </a>
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-building"></i></span> Direccion De La Municipalidad
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Servicios -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            SERVICIOS <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="index.html#servicios" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
+                                </a>
+                                
+                                <div class="relative group/libro">
+                                    <a href="https://facilita.gob.pe/t/1669" target="_blank" class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-green text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-book w-6 text-muni-green"></i> Libro De Reclamaciones</span>
+                                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                                    </a>
+                                    <div class="absolute submenu-adjust w-60 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-green">
+                                            <a href="https://reclamos.servicios.gob.pe/users/sign_in" target="_blank" class="block px-4 py-3 hover:bg-gray-50 text-sm text-gray-600 hover:text-muni-green transition">Administracion De Reclamos</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop w-6 text-muni-green"></i> Registro de Visitas
+                                </a>
+                                <a href="https://facilita.gob.pe/t/5598" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-book-open w-6 text-muni-green"></i> Mesa de Partes Virtual
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: NORMATIVIDAD -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            NORMATIVIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-accent pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Documentos
+                                </a>
+
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-chart-line w-6 text-muni-accent"></i> Planes Y Politicas</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent">
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan Estrategico Institucional-PEI</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan Operativo Institucional-POI</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan De Gobierno Digital</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-file-contract w-6 text-muni-accent"></i> Instrumentos Gestión</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-56 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Clasificador De Cargos</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">POI</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">PIA</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">ROF</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">MOF</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">CAP</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">RASA Y CIEMA</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">MAPRO</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">TUPA</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">RIT</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-gavel w-6 text-muni-accent"></i> Presupuesto</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
+                                            <a href="https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_info_finan.aspx?id_entidad=11272&id_tema=19&ver=" target="_blank" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Información Presupuestal</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="relative group/libro">
+                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-gavel w-6 text-muni-accent"></i> Normas Emitidas</span>
+                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
+                                    </button>
+                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Ordenanzas Municipales</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Resoluciones de Alcaldia</a>
+                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Decretos de Alcaldía</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-exclamation-circle w-6 text-muni-accent"></i> Recomendaciones Auditoria
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Ciudad -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            CIUDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full right-0 pt-3 w-64 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-gold pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="index.html#turismo" class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-camera w-6 text-muni-gold"></i> Historia De Carhuamayo
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-music w-6 text-muni-gold"></i> Himno De Carhuamayo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Transparencia -->
+                    <div class="relative group px-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            TRANSPARENCIA <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full right-0 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-gob-blue pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop-code w-6 text-gob-blue"></i> Portal De Transparencia
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> Agenda Institucional
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-bullhorn w-6 text-gob-blue"></i> Denunciar Actos De Corrupción
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-green-50 rounded-full transition">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 absolute w-full shadow-2xl overflow-y-auto max-h-[80vh] z-50">
+            <a href="index.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-home mr-2 text-muni-green"></i> Inicio</a>
+            
+            <div class="border-b bg-gray-50">
+                <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Gestión</p>
+                <a href="alcaldia.html" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Alcaldía</a>
+                <a href="#" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Documentos de Gestión</a>
+            </div>
+
+            <div class="border-b bg-gray-50">
+                <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Servicios</p>
+                <a href="index.html#servicios" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Trámites y TUPA</a>
+                <a href="#" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Pagos en Línea</a>
+            </div>
+
+            <a href="index.html#noticias" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="far fa-newspaper mr-2 text-muni-green"></i> Noticias</a>
+            <a href="index.html#turismo" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-map-marked-alt mr-2 text-muni-green"></i> Turismo</a>
+            
+            <div class="p-4 bg-white">
+                <button class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg transform active:scale-95">
+                    <i class="fas fa-laptop-file mr-2"></i> Mesa de Partes Virtual
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION - ALCALDÍA -->
+    <section class="relative h-[500px] md:h-[600px] overflow-hidden">
+        <!-- Imagen de fondo -->
+        <div class="absolute inset-0">
+            <img src="img/img1.jpg" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-muni-dark/90 via-muni-green/80 to-muni-dark/70"></div>
+        </div>
+        
+        <!-- Contenido -->
+        <div class="container mx-auto px-4 relative z-10 h-full flex items-center">
+            <div class="flex flex-col md:flex-row items-center gap-12 w-full pt-20 md:pt-0">
+                <!-- Foto del Alcalde -->
+                <div class="flex-shrink-0" data-aos="fade-right">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
+                            <img src="img/ALCALDE2.jpg" alt="Alcalde" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Borde decorativo -->
+                        <div class="absolute -inset-4 border-2 border-muni-gold/50 rounded-full -z-10 animate-pulse"></div>
+                    </div>
+                </div>
+                
+                <!-- Texto de Bienvenida -->
+                <div class="text-white text-center md:text-left" data-aos="fade-left" data-aos-delay="200">
+                    <span class="inline-block bg-muni-gold/20 text-muni-gold px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-muni-gold/30">
+                        <i class="fas fa-landmark mr-2"></i> Gestión Municipal 2023-2026
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                        Alcaldía de <span class="text-muni-gold">Carhuamayo</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-200 mb-6 font-light">
+                        Construyendo un futuro mejor para todos los vecinos
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave decorativo -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-full h-[80px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- MENSAJE DEL ALCALDE -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    
+                    
+                    <div class="w-24 h-1.5 bg-gradient-to-r from-muni-green to-muni-gold mx-auto rounded-full"></div>
+                </div>
+
+                <div class="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-soft border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-start gap-6 mb-8">
+                        <div class="w-16 h-16 bg-muni-green rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-quote-left text-white text-2xl"></i>
+                        </div>
+                        <p class="text-xl md:text-2xl text-gray-700 italic font-light leading-relaxed">
+                            "Es un honor para mi, como alcalde de la Municipalidad Distrital de Carhuamayo, darles la más cordial bienvenida a nuestra sala de reuniones. Este espacio ha sido creado para fomentar el diálogo, la participación y la colaboración entre todos nosotros, con el objetivo de trabajar juntos por el bienestar y desarrollo de nuestra querida comunidad.<br><br>
+
+                            Carhuamayo, mi tierra querida, es un lugar lleno de historia y tradiciones que nos enorgullecen. En esta sala de reuniones, esperamos escuchar sus ideas, propuestas y preocupaciones, para así poder construir un futuro mejor para todos. Su participación activa es fundamental para lograr los objetivos que nos hemos propuesto.<br><br>
+                            
+                            Les invito a seguirnos en nuestros canales oficiales de redes sociales para mantenerse informados sobre nuestras iniciativas y eventos. Juntos, podemos hacer de Carhuamayo un lugar aún más próspero y unido"
+                        </p>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-8">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                            <div class="text-center md:text-left">
+                                <h4 class="text-xl font-bold text-gray-900">Abdel Edgardo Vega Huaranga</h4>
+                                <p class="text-muni-green font-medium">Alcalde Provincial</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-muni-green text-white flex items-center justify-center hover:bg-muni-dark transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-muni-green text-white flex items-center justify-center hover:bg-muni-dark transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-muni-green text-white flex items-center justify-center hover:bg-muni-dark transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATOS DEL ALCALDE -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tarjeta 1 -->
+                <div class="alcalde-card bg-white p-8 rounded-2xl shadow-soft text-center border-b-4 border-muni-green" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-green-100 text-muni-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">2023-2026</h3>
+                    <p class="text-gray-600 font-medium">Período de Gestión</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="alcalde-card bg-white p-8 rounded-2xl shadow-soft text-center border-b-4 border-muni-gold" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-yellow-100 text-muni-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">25,000+</h3>
+                    <p class="text-gray-600 font-medium">Habitantes Atendidos</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="alcalde-card bg-white p-8 rounded-2xl shadow-soft text-center border-b-4 border-gob-blue" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-100 text-gob-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hard-hat text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">50+</h3>
+                    <p class="text-gray-600 font-medium">Obras Ejecutadas</p>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="alcalde-card bg-white p-8 rounded-2xl shadow-soft text-center border-b-4 border-muni-accent" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-red-100 text-muni-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-holding-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">100+</h3>
+                    <p class="text-gray-600 font-medium">Programas Sociales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GESTIÓN MUNICIPAL -->
+    <section id="gestion" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-muni-accent font-bold uppercase tracking-wider text-sm bg-red-50 px-4 py-1 rounded-full">Gestión</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">Ejes de Gestión</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-muni-accent to-muni-gold mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">Nuestro plan de trabajo está enfocado en cinco pilares fundamentales para el desarrollo de Carhuamayo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Eje 1 -->
+                <div class="logro-item bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-muni-green rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-road text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Infraestructura y Obras Públicas</h3>
+                    <p class="text-gray-600 mb-4">Construcción y mejora de vías urbanas, puentes y espacios públicos para una mejor conectividad.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-green mr-2"></i> Pavimentación de calles</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-green mr-2"></i> Ampliación de pistas</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-green mr-2"></i> Construcción de veredas</li>
+                    </ul>
+                </div>
+
+                <!-- Eje 2 -->
+                <div class="logro-item bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-gob-blue rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Salud y Bienestar Social</h3>
+                    <p class="text-gray-600 mb-4">Fortalecimiento de servicios de salud y programas sociales para las familias más vulnerables.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-gob-blue mr-2"></i> Campañas de salud</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-gob-blue mr-2"></i> Centros de salud equipados</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-gob-blue mr-2"></i> Programas de alimentación</li>
+                    </ul>
+                </div>
+
+                <!-- Eje 3 -->
+                <div class="logro-item bg-gradient-to-br from-yellow-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-muni-gold rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Educación y Cultura</h3>
+                    <p class="text-gray-600 mb-4">Promoción de la educación y preservación de nuestras tradiciones y patrimonio cultural.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-gold mr-2"></i> Becas educativas</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-gold mr-2"></i> Mejora de colegios</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-gold mr-2"></i> Eventos culturales</li>
+                    </ul>
+                </div>
+
+                <!-- Eje 4 -->
+                <div class="logro-item bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Medio Ambiente</h3>
+                    <p class="text-gray-600 mb-4">Cuidado del medio ambiente y promoción de prácticas sostenibles en nuestra comunidad.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-600 mr-2"></i> Árboles plantados</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-600 mr-2"></i> Reciclaje comunitario</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-600 mr-2"></i> Tratamiento de residuos</li>
+                    </ul>
+                </div>
+
+                <!-- Eje 5 -->
+                <div class="logro-item bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 bg-muni-accent rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Seguridad Ciudadana</h3>
+                    <p class="text-gray-600 mb-4">Fortalecimiento del serenazgo y sistemas de vigilancia para proteger a nuestra comunidad.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-accent mr-2"></i> Cámaras de vigilancia</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-accent mr-2"></i> Patrullaje integrado</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-accent mr-2"></i> Botones de pánico</li>
+                    </ul>
+                </div>
+
+                <!-- Eje 6 -->
+                <div class="logro-item bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Desarrollo Económico</h3>
+                    <p class="text-gray-600 mb-4">Promoción del emprendimiento y apoyo a los productores locales para dinamizar la economía.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Ferias comerciales</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Capacitaciones</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Microcréditos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGROS DESTACADOS -->
+    <section class="py-24 bg-muni-dark text-white relative overflow-hidden">
+        <!-- Fondo decorativo -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-muni-green/20 to-transparent"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-muni-gold font-bold uppercase tracking-wider text-sm">Resultados</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-4">Logros Destacados</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-muni-gold to-yellow-300 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Logro 1 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-muni-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-building text-3xl text-muni-gold"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-white mb-2">15</h3>
+                    <p class="text-gray-300">Obras de Infraestructura</p>
+                </div>
+
+                <!-- Logro 2 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tree text-3xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-white mb-2">5,000</h3>
+                    <p class="text-gray-300">Árboles Plantados</p>
+                </div>
+
+                <!-- Logro 3 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-graduate text-3xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-white mb-2">500</h3>
+                    <p class="text-gray-300">Becas Otorgadas</p>
+                </div>
+
+                <!-- Logro 4 -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-3xl text-red-400"></i>
+                    </div>
+                    <h3 class="text-4xl font-bold text-white mb-2">10,000</h3>
+                    <p class="text-gray-300">Vecinos Atendidos</p>
+                </div>
+            </div>
+
+            <!-- Llamado a la acción -->
+            <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="500">
+                <a href="#" class="inline-flex items-center justify-center px-10 py-4 bg-muni-gold text-muni-dark font-bold rounded-full hover:bg-white hover:shadow-lg transition transform hover:-translate-y-1">
+                    <i class="fas fa-file-alt mr-3"></i> Ver Informe de Gestión
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO DE GESTIÓN -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-muni-green font-bold uppercase tracking-wider text-sm bg-green-100 px-4 py-1 rounded-full">Equipo</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">Gerencias y Oficinas</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-muni-green to-muni-gold mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">Conoce a los profesionales que conforman nuestro equipo de trabajo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Gerente 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-muni-whith to-muni-dark flex items-center justify-center">
+                        <img src="img/YDA.jpg" class="h-48">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Yda Hidelisa Huamali Condor</h3>
+                        <p class="text-muni-green font-medium text-sm mb-3">REGIDORA</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-gob-blue to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Wilmer Felipe Torres Camavilca</h3>
+                        <p class="text-gob-blue font-medium text-sm mb-3">REGIDOR</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-br from-muni-whith to-yellow-600 flex items-center justify-center">
+                        <img src="img/GISEL.jpg" class="h-48">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Yisel Sherly Matos Ramirez</h3>
+                        <p class="text-yellow-600 font-medium text-sm mb-3">REGIDORA</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 bg-gradient-to-br from-muni-whith to-red-800 flex items-center justify-center">
+                        <img src="img/EDGAR.jpg" class="h-48">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Edgar Moreno Callupe</h3>
+                        <p class="text-muni-accent font-medium text-sm mb-3">REGIDOR</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-accent transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-accent transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-muni-whith to-muni-dark flex items-center justify-center">
+                        <img src="img/KIARA.jpg" class="h-48">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Kiara Esperanza Huaman Carhuas</h3>
+                        <p class="text-muni-green font-medium text-sm mb-3">REGIDORA</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-muni-whith to-blue-800 flex items-center justify-center">
+                        <img src="img/SHIRLEY.jpg" class="h-48"> 
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Shirley Erika Basurto Yapias</h3>
+                        <p class="text-gob-blue font-medium text-sm mb-3">SECRETARIA GENERAL</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-br from-muni-gold to-yellow-600 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Nombre del Funcionario</h3>
+                        <p class="text-yellow-600 font-medium text-sm mb-3">Gerencia de Administración</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 bg-gradient-to-br from-muni-accent to-red-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Simon Urbano Condor Campos</h3>
+                        <p class="text-muni-accent font-medium text-sm mb-3">Jefe de Oficina De Tesorería</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-accent transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-accent transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-muni-green to-muni-dark flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Ever Wilfredo Carhuas Panduro</h3>
+                        <p class="text-muni-green font-medium text-sm mb-3">Jefe de Oficina De Registro Civil</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-gob-blue to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Daniel Teodoro Maldonado Orihuela</h3>
+                        <p class="text-gob-blue font-medium text-sm mb-3">Jefe de Oficina De Contabilidad</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-br from-muni-gold to-yellow-600 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Alex Surichaqui Aquino</h3>
+                        <p class="text-yellow-600 font-medium text-sm mb-3">Jefe de Oficina De Recursos Humanos</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 bg-gradient-to-br from-muni-accent to-red-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Melita Cerron Rojas</h3>
+                        <p class="text-muni-accent font-medium text-sm mb-3">Jefe Oficina De Abastecimiento Patrimonio Y Almacén</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-accent transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-accent transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-muni-green to-muni-dark flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Danitza Carolina Tinoco Vega</h3>
+                        <p class="text-muni-green font-medium text-sm mb-3">Subgerente De Servicios Públicos Y Locales</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-muni-green transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-gob-blue to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Johnny Nilson Omonte Arzapalo</h3>
+                        <p class="text-gob-blue font-medium text-sm mb-3">Subgerente De Medio Ambiente Y Economía Local</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-gob-blue transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerente 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-br from-muni-gold to-yellow-600 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Manuel Alan Torres Perez</h3>
+                        <p class="text-yellow-600 font-medium text-sm mb-3">Subgerente De Infraestructura Urbana Y Rural</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-envelope"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-yellow-600 transition"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-muni-green to-muni-dark rounded-3xl p-8 md:p-12 text-white text-center" data-aos="zoom-in">
+                <i class="fas fa-headset text-5xl text-muni-gold mb-6"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Tienes alguna consulta?</h2>
+                <p class="text-xl text-gray-200 mb-8">Estamos para servirte. Contáctanos a través de nuestros canales de atención.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="tel:011234567" class="px-8 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 border border-white/30 transition">
+                        <i class="fas fa-phone-alt mr-2"></i> (01) 123-4567
+                    </a>
+                    <a href="mailto:contacto@municarhuamayogob.pe" class="px-8 py-3 bg-muni-gold text-muni-dark font-bold rounded-full hover:bg-white hover:shadow-lg transition">
+                        <i class="fas fa-envelope mr-2"></i> Enviar Correo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-gray-900 text-gray-300 pt-20 pb-10 border-t-8 border-muni-green">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            
+            <!-- Columna 1 -->
+            <div data-aos="fade-up">
+                <div class="flex items-center space-x-3 mb-8 text-white">
+                    <div class="w-12 h-12 bg-gradient-to-br from-muni-green to-green-700 rounded-lg flex items-center justify-center shadow-lg">
+                        <img src="img/carhuamayo logo.png" class="h-8 w-auto object-contain">
+                    </div>
+                    <span class="font-bold text-2xl leading-tight tracking-tight">MUNI<br>CARHUAMAYO</span>
+                </div>
+                <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                    Institución pública comprometida con el desarrollo integral, sostenible y armónico de la provincia, brindando servicios de calidad.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Columna 2 -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Enlaces de Interés</h3>
+                <ul class="space-y-4 text-sm">
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Mesa de Partes Virtual</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Portal de Transparencia</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Convocatorias CAS</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Ordenanzas Municipales</a></li>
+                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Directorio de Funcionarios</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3 -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Contáctanos</h3>
+                <ul class="space-y-6 text-sm">
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-map-marker-alt"></i></div>
+                        <span>Jr. Ayacucho 123, Plaza de Armas,<br>Carhuamayo, Perú</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-phone-alt"></i></div>
+                        <span>(01) 123-4567 / (01) 987-6543</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-envelope"></i></div>
+                        <span>contacto@municarhuamayogob.pe</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Columna 4 -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Atención al Vecino</h3>
+                <p class="text-sm mb-4 text-gray-400">Horario de Oficina:</p>
+                <div class="bg-gray-800 p-4 rounded-lg mb-6 border-l-4 border-muni-gold">
+                    <p class="text-white font-bold text-sm">Lunes a Viernes</p>
+                    <p class="text-gray-400 text-xs mt-1">8:00 AM - 1:00 PM</p>
+                    <p class="text-gray-400 text-xs">2:30 PM - 5:00 PM</p>
+                </div>
+                
+                <div class="mt-4 p-5 bg-gradient-to-r from-red-900 to-red-800 rounded-xl border border-red-700 shadow-lg transform hover:scale-105 transition duration-300">
+                    <p class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center"><i class="fas fa-exclamation-triangle mr-2 animate-pulse"></i> Emergencias (24h)</p>
+                    <p class="text-3xl font-black text-white tracking-widest">0-800-123</p>
+                    <p class="text-xs text-red-200 mt-1">Seguridad Ciudadana</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2024 Municipalidad Distrital de Carhuamayo. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-white transition">Políticas de Privacidad</a>
+                    <a href="#" class="hover:text-white transition">Términos de Uso</a>
+                    <a href="#" class="hover:text-white transition">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Animaciones AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Lógica del Menú Móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Cerrar menú móvil al hacer click en un enlace
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.querySelector('i').classList.remove('fa-times');
+                btn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Header Sticky
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
