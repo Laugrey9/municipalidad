@@ -25,18 +25,18 @@
             theme: {
                 extend: {
                     colors: {
-                        'muni-green': '#006837',
-                        'muni-dark': '#004d29',
-                        'muni-accent': '#c1272d',
-                        'muni-gold': '#d4af37',
-                        'gob-blue': '#2E58A6',
+                        'muni-green': '#1e3a8a',
+                        'muni-dark': '#172554',
+                        'muni-accent': '#1e40af',
+                        'muni-gold': '#3b82f6',
+                        'gob-blue': '#1d4ed8',
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.15)',
-                        'glow': '0 0 15px rgba(0, 104, 55, 0.3)'
+                        'glow': '0 0 15px rgba(30, 58, 138, 0.3)'
                     }
                 }
             }
@@ -59,12 +59,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #006837;
+            background: #1e3a8a;
             border-radius: 5px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #004d29;
+            background: #172554;
         }
 
         /* Efecto Glassmorphism para el header */
@@ -151,7 +151,7 @@
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- BARRA DE CONTACTO SUPERIOR -->
-    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-green-800 relative z-[1000]">
+    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-blue-900 relative z-[1000]">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex space-x-6">
                 <span class="flex items-center gap-2"><i class="fas fa-phone-alt text-muni-gold animate-pulse"></i> (01)
@@ -195,7 +195,7 @@
                     <!-- Dropdown: La Municipalidad -->
                     <div class="relative group px-1">
                         <button
-                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             MUNICIPALIDAD <i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -205,21 +205,21 @@
                             <div
                                 class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
                                 <a href="alcaldia.html"
-                                    class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <span
-                                        class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i
+                                        class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i
                                             class="fas fa-user-tie"></i></span> Alcaldia
                                 </a>
                                 <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank"
-                                    class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <span
-                                        class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i
+                                        class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i
                                             class="fas fa-user-tie"></i></span> Mision Y Vision
                                 </a>
                                 <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank"
-                                    class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
                                     <span
-                                        class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i
+                                        class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i
                                             class="fas fa-users"></i></span> Direccion De La Municipalidad
                                 </a>
                             </div>
@@ -229,7 +229,7 @@
                     <!-- Dropdown: Servicios -->
                     <div class="relative group px-1">
                         <button
-                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             SERVICIOS <i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -238,7 +238,7 @@
                             <div
                                 class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
                                 <a href="#servicios"
-                                    class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
                                 </a>
 
@@ -261,11 +261,11 @@
                                 </div>
 
                                 <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank"
-                                    class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-laptop w-6 text-muni-green"></i> Registro de Visitas
                                 </a>
                                 <a href="https://facilita.gob.pe/t/5598" target="_blank"
-                                    class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
                                     <i class="fas fa-book-open w-6 text-muni-green"></i> Mesa de Partes Virtual
                                 </a>
                             </div>
@@ -275,7 +275,7 @@
                     <!-- Dropdown: NORMATIVIDAD -->
                     <div class="relative group px-1">
                         <button
-                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             NORMATIVIDAD <i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -403,7 +403,7 @@
                     <!-- Dropdown: Carhuamayo -->
                     <div class="relative group px-1">
                         <button
-                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             CARHUAMAYO0<i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -422,7 +422,7 @@
                     <!-- Dropdown: Transparencia -->
                     <div class="relative group px-1">
                         <button
-                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             TRANSPARENCIA <i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -449,7 +449,7 @@
 
                 <!-- Botón Menú Móvil -->
                 <button id="mobile-menu-btn"
-                    class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-green-50 rounded-full transition">
+                    class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-blue-50 rounded-full transition">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -488,7 +488,7 @@
 
             <div class="p-4 bg-white">
                 <button
-                    class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg transform active:scale-95">
+                    class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform active:scale-95">
                     <i class="fas fa-laptop-file mr-2"></i> Mesa de Partes Virtual
                 </button>
             </div>
@@ -529,7 +529,7 @@
 
                 <!-- Acceso 2 -->
                 <a href="https://facilita.gob.pe/t/5598"
-                    class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-green-50 transition border border-gray-100 hover:border-green-200 group text-center h-full shadow-sm hover:shadow-md">
+                    class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white hover:bg-blue-50 transition border border-gray-100 hover:border-blue-200 group text-center h-full shadow-sm hover:shadow-md">
                     <img src="img/mesa_de_partes-removebg-preview.png">
                 </a>
 
@@ -556,13 +556,13 @@
         <!-- Fondo decorativo SVG -->
         <svg class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" viewBox="0 0 100 100"
             preserveAspectRatio="none">
-            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="#006837" />
+            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="#1e3a8a" />
         </svg>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-20" data-aos="fade-up">
                 <span
-                    class="text-muni-green font-bold uppercase tracking-wider text-sm bg-green-100 px-4 py-1 rounded-full">Atención
+                    class="text-muni-green font-bold uppercase tracking-wider text-sm bg-blue-100 px-4 py-1 rounded-full">Atención
                     al Ciudadano</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">Trámites y Servicios</h2>
                 <div class="w-24 h-1.5 bg-gradient-to-r from-muni-gold to-yellow-300 mx-auto rounded-full"></div>
@@ -573,42 +573,42 @@
             <!-- Grid de 3 columnas x 2 filas para MOF, ROF, CAP, MPP, PAP, TUPA -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <!-- Fila 1, Columna 1: MOF -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                     data-aos="fade-up" data-aos-delay="100">
                     <img src="img/MOF3.png"
                         class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
                 </div>
 
                 <!-- Fila 1, Columna 2: ROF -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                     data-aos="fade-up" data-aos-delay="200">
                     <img src="img/ROF3.png"
                         class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
                 </div>
 
                 <!-- Fila 1, Columna 3: CAP -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                     data-aos="fade-up" data-aos-delay="300">
                     <img src="img/CAP3.png"
                         class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
                 </div>
 
                 <!-- Fila 2, Columna 1: MPP -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                     data-aos="fade-up" data-aos-delay="400">
                     <img src="img/MPP3.png"
                         class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
                 </div>
 
                 <!-- Fila 2, Columna 2: PAP -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                     data-aos="fade-up" data-aos-delay="500">
                     <img src="img/PAP3.png"
                         class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
                 </div>
 
                 <!-- Fila 2, Columna 3: TUPA -->
-                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                     data-aos="fade-up" data-aos-delay="600">
                     <img src="img/TUPA3.png"
                         class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
@@ -653,13 +653,13 @@
 
                 <!-- Columna Derecha: R_ALCALDIA y R_GERENCIA -->
                 <div class="flex flex-col gap-8">
-                    <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                    <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                         data-aos="fade-up" data-aos-delay="300">
                         <img src="img/R_ALCALDIA3.png"
                             class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
                     </div>
 
-                    <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-muni-green transition-all duration-300"
+                    <div class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center text-center cursor-pointer group relative overflow-hidden hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-gob-blue transition-all duration-300"
                         data-aos="fade-up" data-aos-delay="400">
                         <img src="img/R_GERNECIA3.png"
                             class="w-48 h-auto transition-transform duration-500 group-hover:-translate-y-2">
@@ -669,7 +669,7 @@
 
             <div class="text-center mt-16" data-aos="fade-in">
                 <a href="#"
-                    class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-muni-green hover:bg-green-700 transition shadow-lg hover:shadow-2xl hover:-translate-y-1">
+                    class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-muni-green hover:bg-blue-700 transition shadow-lg hover:shadow-2xl hover:-translate-y-1">
                     Ver todos los servicios
                     <i class="fas fa-arrow-right ml-3"></i>
                 </a>

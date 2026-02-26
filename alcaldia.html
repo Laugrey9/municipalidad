@@ -23,18 +23,18 @@
             theme: {
                 extend: {
                     colors: {
-                        'muni-green': '#006837', 
-                        'muni-dark': '#004d29',
-                        'muni-accent': '#c1272d', 
-                        'muni-gold': '#d4af37',
-                        'gob-blue': '#2E58A6', 
+                        'muni-green': '#1e3a8a', 
+                        'muni-dark': '#172554',
+                        'muni-accent': '#1e40af', 
+                        'muni-gold': '#3b82f6',
+                        'gob-blue': '#1d4ed8', 
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
                     },
                     boxShadow: {
                         'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.15)',
-                        'glow': '0 0 15px rgba(0, 104, 55, 0.3)'
+                        'glow': '0 0 15px rgba(30, 58, 138, 0.3)'
                     }
                 }
             }
@@ -47,8 +47,8 @@
         /* Scrollbar personalizado */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #006837; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #004d29; }
+        ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #172554; }
 
         /* Glassmorphism */
         .glass-header {
@@ -93,7 +93,7 @@
 
         /* Efecto hero */
         .hero-gradient {
-            background: linear-gradient(135deg, rgba(0,104,55,0.95) 0%, rgba(0,77,41,0.9) 100%);
+            background: linear-gradient(135deg, rgba(30,58,138,0.95) 0%, rgba(23,37,68,0.9) 100%);
         }
 
         /* Tarjeta alcalde */
@@ -117,7 +117,7 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: #006837;
+            background: #1e3a8a;
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
@@ -129,7 +129,7 @@
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen overflow-x-hidden">
     
     <!-- BARRA DE CONTACTO SUPERIOR -->
-    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-green-800 relative z-[60]">
+    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-blue-900 relative z-[60]">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex space-x-6">
                 <span class="flex items-center gap-2"><i class="fas fa-phone-alt text-muni-gold animate-pulse"></i> (01) 123-4567</span>
@@ -162,19 +162,19 @@
                 <nav class="hidden md:flex flex-1 justify-end lg:justify-center items-center space-x-1 ml-4 lg:ml-0">
                     <!-- Dropdown: La Municipalidad -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             MUNICIPALIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-0 pt-3 w-64 hidden group-hover:block z-50">
                             <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
-                                <a href="alcaldia.html" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
-                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Alcaldia
+                                <a href="alcaldia.html" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Alcaldia
                                 </a>
-                                <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
-                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-bullseye"></i></span> Mision Y Vision
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-bullseye"></i></span> Mision Y Vision
                                 </a>
-                                <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
-                                    <span class="w-8 h-8 rounded-full bg-green-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-building"></i></span> Direccion De La Municipalidad
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-building"></i></span> Direccion De La Municipalidad
                                 </a>
                             </div>
                         </div>
@@ -182,12 +182,12 @@
 
                     <!-- Dropdown: Servicios -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             SERVICIOS <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-0 pt-3 w-72 hidden group-hover:block z-50">
                             <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
-                                <a href="index.html#servicios" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                <a href="index.html#servicios" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
                                 </a>
                                 
@@ -203,10 +203,10 @@
                                     </div>
                                 </div>
 
-                                <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-laptop w-6 text-muni-green"></i> Registro de Visitas
                                 </a>
-                                <a href="https://facilita.gob.pe/t/5598" target="_blank" class="flex items-center px-4 py-3 hover:bg-green-50 text-sm text-gray-700 transition">
+                                <a href="https://facilita.gob.pe/t/5598" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
                                     <i class="fas fa-book-open w-6 text-muni-green"></i> Mesa de Partes Virtual
                                 </a>
                             </div>
@@ -215,7 +215,7 @@
 
                     <!-- Dropdown: NORMATIVIDAD -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             NORMATIVIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-3 w-72 hidden group-hover:block z-50">
@@ -295,7 +295,7 @@
 
                     <!-- Dropdown: Ciudad -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             CARHUAMAYO <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full right-0 pt-3 w-64 hidden group-hover:block z-50">
@@ -309,7 +309,7 @@
 
                     <!-- Dropdown: Transparencia -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-green-50 rounded-lg transition flex items-center gap-1">
+                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             TRANSPARENCIA <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
                         <div class="absolute top-full right-0 pt-3 w-72 hidden group-hover:block z-50">
@@ -329,7 +329,7 @@
                 </nav>
 
                 <!-- Botón Menú Móvil -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-green-50 rounded-full transition">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-blue-50 rounded-full transition">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -355,7 +355,7 @@
             <a href="index.html#turismo" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-map-marked-alt mr-2 text-muni-green"></i> Turismo</a>
             
             <div class="p-4 bg-white">
-                <button class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg transform active:scale-95">
+                <button class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform active:scale-95">
                     <i class="fas fa-laptop-file mr-2"></i> Mesa de Partes Virtual
                 </button>
             </div>
@@ -461,7 +461,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Tarjeta 1 -->
                 <div class="alcalde-card bg-white p-8 rounded-2xl shadow-soft text-center border-b-4 border-muni-green" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-green-100 text-muni-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-blue-100 text-muni-green rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-calendar-check text-2xl"></i>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-900 mb-2">2023-2026</h3>
@@ -498,168 +498,13 @@
         </div>
     </section>
 
-    <!-- GESTIÓN MUNICIPAL -->
-    <section id="gestion" class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-muni-accent font-bold uppercase tracking-wider text-sm bg-red-50 px-4 py-1 rounded-full">Gestión</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">Ejes de Gestión</h2>
-                <div class="w-24 h-1.5 bg-gradient-to-r from-muni-accent to-muni-gold mx-auto rounded-full"></div>
-                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">Nuestro plan de trabajo está enfocado en cinco pilares fundamentales para el desarrollo de Carhuamayo.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Eje 1 -->
-                <div class="logro-item bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-muni-green rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-road text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Infraestructura y Obras Públicas</h3>
-                    <p class="text-gray-600 mb-4">Construcción y mejora de vías urbanas, puentes y espacios públicos para una mejor conectividad.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-green mr-2"></i> Pavimentación de calles</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-green mr-2"></i> Ampliación de pistas</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-green mr-2"></i> Construcción de veredas</li>
-                    </ul>
-                </div>
-
-                <!-- Eje 2 -->
-                <div class="logro-item bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-gob-blue rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-heartbeat text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Salud y Bienestar Social</h3>
-                    <p class="text-gray-600 mb-4">Fortalecimiento de servicios de salud y programas sociales para las familias más vulnerables.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-gob-blue mr-2"></i> Campañas de salud</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-gob-blue mr-2"></i> Centros de salud equipados</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-gob-blue mr-2"></i> Programas de alimentación</li>
-                    </ul>
-                </div>
-
-                <!-- Eje 3 -->
-                <div class="logro-item bg-gradient-to-br from-yellow-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-muni-gold rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-graduation-cap text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Educación y Cultura</h3>
-                    <p class="text-gray-600 mb-4">Promoción de la educación y preservación de nuestras tradiciones y patrimonio cultural.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-gold mr-2"></i> Becas educativas</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-gold mr-2"></i> Mejora de colegios</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-gold mr-2"></i> Eventos culturales</li>
-                    </ul>
-                </div>
-
-                <!-- Eje 4 -->
-                <div class="logro-item bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-leaf text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Medio Ambiente</h3>
-                    <p class="text-gray-600 mb-4">Cuidado del medio ambiente y promoción de prácticas sostenibles en nuestra comunidad.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-600 mr-2"></i> Árboles plantados</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-600 mr-2"></i> Reciclaje comunitario</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-600 mr-2"></i> Tratamiento de residuos</li>
-                    </ul>
-                </div>
-
-                <!-- Eje 5 -->
-                <div class="logro-item bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-14 h-14 bg-muni-accent rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-shield-alt text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Seguridad Ciudadana</h3>
-                    <p class="text-gray-600 mb-4">Fortalecimiento del serenazgo y sistemas de vigilancia para proteger a nuestra comunidad.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-accent mr-2"></i> Cámaras de vigilancia</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-accent mr-2"></i> Patrullaje integrado</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-muni-accent mr-2"></i> Botones de pánico</li>
-                    </ul>
-                </div>
-
-                <!-- Eje 6 -->
-                <div class="logro-item bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="600">
-                    <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-pie text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Desarrollo Económico</h3>
-                    <p class="text-gray-600 mb-4">Promoción del emprendimiento y apoyo a los productores locales para dinamizar la economía.</p>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Ferias comerciales</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Capacitaciones</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-orange-500 mr-2"></i> Microcréditos</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LOGROS DESTACADOS -->
-    <section class="py-24 bg-muni-dark text-white relative overflow-hidden">
-        <!-- Fondo decorativo -->
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-muni-green/20 to-transparent"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-muni-gold font-bold uppercase tracking-wider text-sm">Resultados</span>
-                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-4">Logros Destacados</h2>
-                <div class="w-24 h-1.5 bg-gradient-to-r from-muni-gold to-yellow-300 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Logro 1 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-muni-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-building text-3xl text-muni-gold"></i>
-                    </div>
-                    <h3 class="text-4xl font-bold text-white mb-2">15</h3>
-                    <p class="text-gray-300">Obras de Infraestructura</p>
-                </div>
-
-                <!-- Logro 2 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-tree text-3xl text-green-400"></i>
-                    </div>
-                    <h3 class="text-4xl font-bold text-white mb-2">5,000</h3>
-                    <p class="text-gray-300">Árboles Plantados</p>
-                </div>
-
-                <!-- Logro 3 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-graduate text-3xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-4xl font-bold text-white mb-2">500</h3>
-                    <p class="text-gray-300">Becas Otorgadas</p>
-                </div>
-
-                <!-- Logro 4 -->
-                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 text-center hover:bg-white/20 transition" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-heart text-3xl text-red-400"></i>
-                    </div>
-                    <h3 class="text-4xl font-bold text-white mb-2">10,000</h3>
-                    <p class="text-gray-300">Vecinos Atendidos</p>
-                </div>
-            </div>
-
-            <!-- Llamado a la acción -->
-            <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="500">
-                <a href="#" class="inline-flex items-center justify-center px-10 py-4 bg-muni-gold text-muni-dark font-bold rounded-full hover:bg-white hover:shadow-lg transition transform hover:-translate-y-1">
-                    <i class="fas fa-file-alt mr-3"></i> Ver Informe de Gestión
-                </a>
-            </div>
-        </div>
-    </section>
+  
 
     <!-- EQUIPO DE GESTIÓN -->
     <section class="py-24 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-muni-green font-bold uppercase tracking-wider text-sm bg-green-100 px-4 py-1 rounded-full">Equipo</span>
+                <span class="text-muni-green font-bold uppercase tracking-wider text-sm bg-blue-100 px-4 py-1 rounded-full">Equipo</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">Gerencias y Oficinas</h2>
                 <div class="w-24 h-1.5 bg-gradient-to-r from-muni-green to-muni-gold mx-auto rounded-full"></div>
                 <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">Conoce a los profesionales que conforman nuestro equipo de trabajo.</p>
