@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Servicios | Municipalidad Distrital de Carhuamayo</title>
+    <title>Libro de Reclamaciones | Municipalidad Distrital de Carhuamayo</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -146,22 +146,27 @@
             width: 100% !important;
         }
 
-        /* Hero section styling for servicios page */
-        .servicios-hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
-            position: relative;
-            overflow: hidden;
+        /* Estilos para las tarjetas del libro de reclamaciones */
+        .reclamo-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .servicios-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://www.transparenttextures.com/patterns/cubes.png');
-            opacity: 0.1;
+        .reclamo-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(30, 58, 138, 0.35);
+        }
+
+        .reclamo-icon {
+            transition: all 0.4s ease;
+        }
+
+        .reclamo-card:hover .reclamo-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* Gradiente de fondo */
+        .bg-gradient-muni {
+            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
         }
     </style>
 </head>
@@ -243,10 +248,10 @@
                         </div>
                     </div>
 
-                    <!-- Dropdown: Servicios (Active) -->
+                    <!-- Dropdown: Servicios -->
                     <div class="relative group px-1">
                         <button
-                            class="px-3 py-2 text-sm font-semibold text-muni-green bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
                             SERVICIOS <i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
@@ -255,13 +260,13 @@
                             <div
                                 class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
                                 <a href="servicios.html"
-                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition bg-blue-50">
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
                                 </a>
 
                                 <!-- Submenú Anidado -->
                                 <div class="relative group/libro">
-                                    <a href="libro-reclamaciones.html" 
+                                    <a href="libro-reclamaciones.html"
                                         class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-green text-sm border-b border-gray-50 transition flex justify-between items-center">
                                         <span><i class="fas fa-book w-6 text-muni-green"></i> Libro De
                                             Reclamaciones</span>
@@ -421,7 +426,7 @@
                     <div class="relative group px-1">
                         <button
                             class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
-                            CARHUAMAYO<i
+                            CARHUAMAYO <i
                                 class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
                         <!-- Wrapper Invisible -->
@@ -481,8 +486,7 @@
             <div class="border-b bg-gray-50">
                 <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Gestión</p>
                 <a href="alcaldia.html"
-                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">El
-                    Alcalde</a>
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Alcaldía</a>
                 <a href="#"
                     class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Documentos
                     de Gestión</a>
@@ -491,437 +495,216 @@
             <div class="border-b bg-gray-50">
                 <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Servicios</p>
                 <a href="servicios.html"
-                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition bg-blue-50">Nuestros
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Nuestros
                     Servicios</a>
+                <a href="libro-reclamaciones.html"
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Libro
+                    de Reclamaciones</a>
                 <a href="https://facilita.gob.pe/t/5598" target="_blank"
                     class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Mesa
                     de Partes Virtual</a>
             </div>
 
-            <div class="p-4 bg-white">
-                <button
-                    class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform active:scale-95">
-                    <i class="fas fa-laptop-file mr-2"></i> Mesa de Partes Virtual
-                </button>
-            </div>
+            <a href="#" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i
+                    class="far fa-newspaper mr-2 text-muni-green"></i> Noticias</a>
+            <a href="#" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i
+                    class="fas fa-map-marked-alt mr-2 text-muni-green"></i> Turismo</a>
         </div>
     </header>
 
-    <!-- HERO SECTION - SERVICIOS -->
-    <section class="servicios-hero py-24 md:py-32 relative">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center" data-aos="fade-up" data-aos-duration="1000">
-                <span class="inline-block bg-white/10 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm">
-                    <i class="fas fa-handshake mr-2"></i> ATENCIÓN AL CIUDADANO
-                </span>
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    Nuestros <span class="text-muni-gold">Servicios</span>
-                </h1>
-                <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-10">
-                    Facilitamos tus trámites administrativos con transparencia, eficiencia y compromiso. 
-                    Conoce todos los servicios que la Municipalidad Distrital de Carhuamayo pone a tu disposición.
+    <!-- BREADCRUMB -->
+    <div class="bg-gradient-muni text-white py-4">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center text-sm">
+                <a href="index.html" class="text-blue-200 hover:text-white transition"><i class="fas fa-home"></i>
+                    Inicio</a>
+                <span class="mx-3"><i class="fas fa-chevron-right text-xs"></i></span>
+                <span class="text-white font-medium">Libro de Reclamaciones</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT - LIBRO DE RECLAMACIONES -->
+    <main class="flex-grow py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            
+            <!-- Título Principal -->
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-muni-green rounded-full mb-6 shadow-lg">
+                    <i class="fas fa-book text-white text-3xl"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-muni-dark mb-4">Libro de Reclamaciones</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Gestione sus reclamos de manera rápida y eficiente. Seleccione una opción para continuar.
                 </p>
             </div>
-        </div>
-        
-        <!-- Wave separator -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-            <svg class="relative block w-[calc(130%+1.3px)] h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f9fafb"></path>
-            </svg>
-        </div>
-    </section>
 
-    
-
-    <!-- TRÁMITES Y SERVICIOS PRINCIPALES -->
-    <section id="tramites" class="py-20 bg-gray-50 relative overflow-hidden">
-        <!-- Fondo decorativo SVG -->
-        <svg class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" viewBox="0 0 100 100"
-            preserveAspectRatio="none">
-            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="#1e3a8a" />
-        </svg>
-
-        <div class="container mx-auto px-4 relative z-10">
-            
-
-            <!-- Grid de servicios -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4" data-aos="fade-up" data-aos-delay="100">
+            <!-- Tarjetas de Opciones -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 
-                <!-- Tarjeta 1 -->
-                <a href="https://www.gob.pe/institucion/municarhuamayo/noticias" target="_blank" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-file-alt text-blue-600 text-lg"></i>
+                <!-- Card 1: Realizar Mi Reclamo -->
+                <a href="https://reclamos.servicios.gob.pe/" target="_blank"
+                    class="reclamo-card bg-white rounded-2xl shadow-soft overflow-hidden group cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 opacity-90"></div>
+                        <div class="relative p-8 text-center text-white">
+                            <div class="reclamo-icon w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-pen-to-square text-5xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-3">Realizar Mi Reclamo</h2>
+                            <p class="text-red-100 text-sm">
+                                Registre su reclamo de forma online a través del sistema de reclamos del Estado
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Nuestras Noticias</h3>
-                    
+                    <div class="bg-gray-50 px-8 py-4 flex items-center justify-between group-hover:bg-red-50 transition">
+                        <span class="text-sm font-semibold text-gray-600 group-hover:text-red-600">Ir al formulario</span>
+                        <i class="fas fa-arrow-right text-muni-green group-hover:translate-x-2 transition transform"></i>
+                    </div>
                 </a>
 
-                <!-- Tarjeta 2 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-sitemap text-blue-600 text-lg"></i>
+                <!-- Card 2: Consultar Mi Reclamo -->
+                <a href="https://reclamos.servicios.gob.pe/reclamos" target="_blank"
+                    class="reclamo-card bg-white rounded-2xl shadow-soft overflow-hidden group cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-700 opacity-90"></div>
+                        <div class="relative p-8 text-center text-white">
+                            <div class="reclamo-icon w-24 h-24 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-search text-5xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-3">Consultar Mi Reclamo</h2>
+                            <p class="text-blue-100 text-sm">
+                                Verifique el estado de su reclamo utilizando el código de seguimiento
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Audiencia Publica De Rendicion De Cuentas</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 3 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-book text-blue-600 text-lg"></i>
+                    <div class="bg-gray-50 px-8 py-4 flex items-center justify-between group-hover:bg-blue-50 transition">
+                        <span class="text-sm font-semibold text-gray-600 group-hover:text-blue-600">Consultar estado</span>
+                        <i class="fas fa-arrow-right text-muni-green group-hover:translate-x-2 transition transform"></i>
                     </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Control Interno</h3>
-                </a>
-
-                <!-- Tarjeta 4 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-users-cog text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">CAP</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 5 -->
-                <a href="https://www.gob.pe/institucion/municarhuamayo/campa%C3%B1as" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-clipboard-list text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Nuestras Camapañas</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 6 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-coins text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">PIA</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 7 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-balance-scale text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">RIT</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 8 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-chart-pie text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">PEI</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 9 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-clipboard-check text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">MAPRO</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 10 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-file-contract text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">RASA</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 11 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-certificate text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">CIEMA</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 12 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-gavel text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Ordenanzas</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 13 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-file-signature text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Decretos</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 14 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-headset text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Sugerencias</h3>
-                    
-                </a>
-
-                <!-- Tarjeta 15 -->
-                <a href="#" class="service-card bg-blue-700 rounded-xl p-5 shadow-sm hover:shadow-soft border border-gray-100 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                        <i class="fas fa-search-dollar text-blue-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-bold text-white text-sm mb-2 group-hover:text-white-500 transition">Transparencia</h3>
-                    
                 </a>
 
             </div>
 
-
-    <!-- CONTACTO DIRECTO -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="bg-white rounded-3xl shadow-soft overflow-hidden" data-aos="fade-up">
-                <div class="grid grid-cols-1 lg:grid-cols-2">
-                    <!-- Información de contacto -->
-                    <div class="bg-muni-green p-8 md:p-12 text-white">
-                        <h3 class="text-2xl font-bold mb-6">¿Necesitas ayuda con tu trámite?</h3>
-                        <p class="text-gray-200 mb-8">Nuestro equipo de atención al ciudadano está disponible para orientarte.</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-300">Teléfono</p>
-                                    <p class="font-semibold">(01) 123-4567</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-300">Correo</p>
-                                    <p class="font-semibold">mesadepartes@municarhuamayo.gob.pe</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-300">Dirección</p>
-                                    <p class="font-semibold">Jr. Ayacucho 123, Plaza de Armas</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 pt-8 border-t border-white/20">
-                            <p class="text-sm text-gray-300 mb-4">Horario de atención:</p>
-                            <div class="bg-white/10 rounded-lg p-4">
-                                <p class="font-semibold">Lunes a Viernes</p>
-                                <p class="text-sm">8:00 AM - 1:00 PM</p>
-                                <p class="text-sm">2:30 PM - 5:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mapa o imagen -->
-                    <div class="bg-gray-200 relative h-full min-h-[400px]">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d496.64803720616203!2d-76.0576685579189!3d-10.922528761397924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91085d055770ee23%3A0x80bf2b16141339f7!2sMunicipalidad%20de%20Carhuamayo!5e0!3m2!1ses-419!2spe!4v1772143767603!5m2!1ses-419!2spe" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            class="absolute inset-0 w-full h-full">
-                        </iframe>
-                    </div>
+            <!-- Información Adicional -->
+            <div class="mt-16 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white rounded-2xl shadow-soft p-8 border-t-4 border-muni-green">
+                    <h3 class="text-xl font-bold text-muni-dark mb-6 flex items-center">
+                        <i class="fas fa-info-circle text-muni-green mr-3"></i>
+                        Información Importante
+                    </h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Los reclamos serán atendidos en un plazo máximo de <strong>30 días hábiles</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Guarde el código de seguimiento que se le proporcionará al registrar su reclamo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Para consultas adicionales, puede comunicarse al <strong>(01) 123-4567</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Horario de atención: Lunes a viernes de 8:00 a.m. a 5:00 p.m.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
+
         </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
-    <footer id="contacto" class="bg-gray-900 text-gray-300 pt-20 pb-10 border-t-8 border-muni-green">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer class="bg-muni-dark text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="img/carhuamayo logo.png" class="h-14 w-auto">
+                        <div>
+                            <h3 class="font-bold text-lg">Municipalidad Distrital</h3>
+                            <h3 class="font-bold text-lg">de Carhuamayo</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Serving a la comunidad con transparencia y eficiencia. Nuestro compromiso es brindar
+                        mejores servicios para un Carhuamayo mejor.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-muni-gold transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-muni-gold transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-muni-gold transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-muni-gold transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
 
-            <!-- Columna 1 -->
-            <div data-aos="fade-up">
-                <div class="flex items-center space-x-3 mb-8 text-white">
-                    
-                    <img src="img/carhuamayo logo.png" class="h-8 w-auto object-contain" class="h-12">
-                
-                <span class="font-bold text-2xl leading-tight tracking-tight">2023-2026
-            </div>
-                <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                    Institución pública comprometida con el desarrollo integral, sostenible y armónico de la provincia,
-                   /brindando servicios de calidad.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition transform hover:-translate-y-1"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:-translate-y-1"><i
-                            class="fab fa-twitter"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition transform hover:-translate-y-1"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition transform hover:-translate-y-1"><i
-                            class="fab fa-youtube"></i></a>
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-muni-gold">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Portal de Transparencia</a></li>
+                        <li><a href="#" class="hover:text-white transition">TUPA</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mesa de Partes Virtual</a></li>
+                        <li><a href="#" class="hover:text-white transition">Convocatorias</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-muni-gold">Contáctenos</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt w-5"></i> Jr. San Carlos N° 102</li>
+                        <li class="flex items-center"><i class="fas fa-phone w-5"></i> (01) 123-4567</li>
+                        <li class="flex items-center"><i class="fas fa-envelope w-5"></i> contacto@municarhuamayogob.pe</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Columna 2 -->
-            <div data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Enlaces de
-                    Interés</h3>
-                <ul class="space-y-4 text-sm">
-                    <li><a href="servicios.html" class="hover:text-muni-green transition flex items-center group"><i
-                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
-                            Nuestros Servicios</a></li>
-                    <li><a href="https://facilita.gob.pe/t/5598" target="_blank" class="hover:text-muni-green transition flex items-center group"><i
-                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
-                            Mesa de Partes Virtual</a></li>
-                    <li><a href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=11272" target="_blank" class="hover:text-muni-green transition flex items-center group"><i
-                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
-                            Portal de Transparencia</a></li>
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i
-                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
-                            Convocatorias CAS</a></li>
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i
-                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
-                            Ordenanzas Municipales</a></li>
-                </ul>
-            </div>
-
-            <!-- Columna 3 -->
-            <div data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Contáctanos
-                </h3>
-                <ul class="space-y-6 text-sm">
-                    <li class="flex items-start">
-                        <div
-                            class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <span>Jr. Ayacucho 123, Plaza de Armas,<br>Carhuamayo, Perú</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div
-                            class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <span>(01) 123-4567</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div
-                            class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <span>contacto@municarhuamayogob.pe</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Columna 4 -->
-            <div data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Atención al
-                    Vecino</h3>
-                <p class="text-sm mb-4 text-gray-400">Horario de Oficina:</p>
-                <div class="bg-gray-800 p-4 rounded-lg mb-6 border-l-4 border-muni-gold">
-                    <p class="text-white font-bold text-sm">Lunes a Viernes</p>
-                    <p class="text-gray-400 text-xs mt-1">8:00 AM - 1:00 PM</p>
-                    <p class="text-gray-400 text-xs">2:30 PM - 5:00 PM</p>
-                </div>
-
-                <div
-                    class="mt-4 p-5 bg-gradient-to-r from-red-900 to-red-800 rounded-xl border border-red-700 shadow-lg transform hover:scale-105 transition duration-300">
-                    <p class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center"><i
-                            class="fas fa-exclamation-triangle mr-2 animate-pulse"></i> Emergencias (24h)</p>
-                    <p class="text-3xl font-black text-white tracking-widest">0-800-123</p>
-                    <p class="text-xs text-red-200 mt-1">Seguridad Ciudadana</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="border-t border-gray-800 pt-8">
-            <div
-                class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <!-- Copyright -->
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400 text-sm">
                 <p>&copy; 2024 Municipalidad Distrital de Carhuamayo. Todos los derechos reservados.</p>
-                <div class="mt-4 md:mt-0 space-x-6">
-                    <a href="#" class="hover:text-white transition">Políticas de Privacidad</a>
-                    <a href="#" class="hover:text-white transition">Términos de Uso</a>
-                    <a href="#" class="hover:text-white transition">Mapa del Sitio</a>
-                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Script de Animaciones AOS -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- Scripts JavaScript -->
     <script>
-        // Inicializar AOS
+        // Inicializar animaciones AOS
         AOS.init({
-            once: true, // La animación solo pasa una vez
-            offset: 100, // Empieza la animación un poco antes
-            duration: 800, // Duración de la animación
-            easing: 'ease-out-cubic',
+            duration: 800,
+            once: true,
+            offset: 100
         });
 
-        // Lógica del Menú Móvil
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            // Cambiar icono
-            const icon = btn.querySelector('i');
-            if (menu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
-
-        // Cerrar menú móvil al hacer click en un enlace
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                btn.querySelector('i').classList.remove('fa-times');
-                btn.querySelector('i').classList.add('fa-bars');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+        }
 
-        // Header Sticky Avanzado
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('py-2');
-                header.classList.remove('py-3');
-                header.classList.add('shadow-lg');
-            } else {
-                header.classList.add('py-3');
-                header.classList.remove('py-2');
-                header.classList.remove('shadow-lg');
+        // Cerrar menú móvil al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
             }
         });
     </script>
