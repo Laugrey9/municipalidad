@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decretos de Alcaldía | Municipalidad Distrital de Carhuamayo</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Librería de Animaciones AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Configuración de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'muni-green': '#1e3a8a',
+                        'muni-dark': '#172554',
+                        'muni-accent': '#1e40af',
+                        'muni-gold': '#3b82f6',
+                        'gob-blue': '#1d4ed8',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.15)',
+                        'glow': '0 0 15px rgba(30, 58, 138, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #172554;
+        }
+
+        /* Glassmorphism para el header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dropdowns */
+        .group:hover .group-hover\:block {
+            display: block;
+            animation: menuFadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes menuFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Submenú ajustes */
+        .submenu-adjust {
+            left: 100%;
+            top: -10px;
+            padding-left: 0.5rem;
+            margin-left: 0;
+        }
+
+        .submenu-adjust-left {
+            right: 100%;
+            top: -10px;
+            padding-right: 0.5rem;
+            margin-left: 0;
+        }
+
+        /* Estilos de la tabla */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .custom-table thead th {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .custom-table thead th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+
+        .custom-table thead th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+
+        .custom-table tbody tr {
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f0f9ff;
+        }
+
+        .custom-table tbody td {
+            padding: 16px 20px;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        .custom-table tbody tr:last-child td:first-child {
+            border-radius: 0 0 0 12px;
+        }
+
+        .custom-table tbody tr:last-child td:last-child {
+            border-radius: 0 0 12px 0;
+        }
+
+        /* Botón de descarga */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Badge para el año */
+        .year-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        /* Alternating row colors */
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .custom-table tbody tr:nth-child(even):hover {
+            background-color: #f0f9ff;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen overflow-x-hidden">
+
+    <!-- BARRA DE CONTACTO SUPERIOR -->
+    <div class="bg-muni-dark text-white text-sm py-2 hidden md:block border-b border-blue-900 relative z-[1000]">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span class="flex items-center gap-2"><i class="fas fa-phone-alt text-muni-gold animate-pulse"></i> (01)
+                    123-4567</span>
+                <span class="flex items-center gap-2"><i class="fas fa-envelope text-muni-gold"></i>
+                    contacto@municarhuamayogob.pe</span>
+            </div>
+            <div class="flex space-x-4 items-center">
+                <span class="text-gray-300 text-xs mr-2 font-medium uppercase">Síguenos:</span>
+                <div class="flex gap-3">
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-muni-gold hover:-translate-y-1 transition transform"><i
+                            class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header class="glass-header sticky top-0 z-[999] shadow-sm transition-all duration-300" id="main-header">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3 group min-w-max">
+                    <div class="flex flex-col">
+                        <img src="img/carhuamayo logo.png" class="h-12 w-auto object-contain">
+                    </div>
+                </a>
+
+                <!-- Navegación Desktop -->
+                <nav class="hidden md:flex flex-1 justify-end lg:justify-center items-center space-x-1 ml-4 lg:ml-0">
+                    <!-- Dropdown: La Municipalidad -->
+                    <div class="relative group px-1">
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            MUNICIPALIDAD <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 pt-3 w-64 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
+                                <a href="alcaldia.html" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Alcaldia
+                                </a>
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Mision Y Vision
+                                </a>
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-users"></i></span> Direccion De La Municipalidad
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Servicios -->
+                    <div class="relative group px-1">
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            SERVICIOS <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="servicios.html" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
+                                </a>
+                                <div class="relative group/libro">
+                                    <a href="libro-reclamaciones.html" class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-green text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-book w-6 text-muni-green"></i> Libro De Reclamaciones</span>
+                                        <i class="fas fa-chevron-right text-xs text-gray-400"></i>
+                                    </a>
+                                    <div class="absolute submenu-adjust w-60 hidden group-hover/libro:block z-50">
+                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-green">
+                                            <a href="https://reclamos.servicios.gob.pe/users/sign_in" target="_blank" class="block px-4 py-3 hover:bg-gray-50 text-sm text-gray-600 hover:text-muni-green transition">Administracion De Reclamos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop w-6 text-muni-green"></i> Registro de Visitas
+                                </a>
+                                <a href="https://facilita.gob.pe/t/5598" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-book-open w-6 text-muni-green"></i> Mesa de Partes Virtual
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: NORMATIVIDAD -->
+                    <div class="relative group px-1">
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            NORMATIVIDAD <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-accent pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="ordenanzas.html" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Ordenanzas Municipales
+                                </a>
+                                <a href="acuerdos-consejo.html" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Acuerdos De Consejo
+                                </a>
+                                <a href="resoluciones-alcaldia.html" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Resoluciones De Alcaldia
+                                </a>
+                                <a href="decretos-alcaldia.html" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Decretos De Alcaldía
+                                </a>
+                                <a href="resoluciones-gerencia.html" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Resoluciones De Gerencia
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Carhuamayo -->
+                    <div class="relative group px-1">
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            CARHUAMAYO<i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full right-0 pt-3 w-64 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-gold pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="https://www.carhuamayo.site/" target="_blank" class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-camera w-6 text-muni-gold"></i> Historia De Carhuamayo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown: Transparencia -->
+                    <div class="relative group px-1">
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            TRANSPARENCIA <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full right-0 pt-3 w-72 hidden group-hover:block z-50">
+                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-gob-blue pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop-code w-6 text-gob-blue"></i> Portal De Transparencia
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop-code w-6 text-gob-blue"></i> Comite Distrital De Seguridad Ciudadana
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> GOB.PE
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> Presupuesto Participativo
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-bullhorn w-6 text-gob-blue"></i> Denunciar Actos De Corrupción
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-blue-50 rounded-full transition">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 absolute w-full shadow-2xl overflow-y-auto max-h-[80vh] z-50">
+            <a href="index.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-home mr-2 text-muni-green"></i> Inicio</a>
+            <a href="ordenanzas.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-gavel mr-2 text-muni-green"></i> Ordenanzas</a>
+            <a href="acuerdos-consejo.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-handshake mr-2 text-muni-green"></i> Acuerdos</a>
+            <a href="resoluciones-alcaldia.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-file-signature mr-2 text-muni-green"></i> Resoluciones</a>
+            <a href="decretos-alcaldia.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50 bg-blue-50"><i class="fas fa-chevron-right mr-2 text-muni-green"></i> Decretos</a>
+            <a href="servicios.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-concierge-bell mr-2 text-muni-green"></i> Servicios</a>
+            <a href="alcaldia.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-building mr-2 text-muni-green"></i> Alcaldía</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative h-64 md:h-80 overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
+        <img src="img/img1.jpg" class="w-full h-full object-cover opacity-50">
+        
+        <div class="absolute inset-0 z-20 flex items-center justify-center">
+            <div class="text-center" data-aos="fade-up">
+                <span class="inline-block px-4 py-1 bg-red-600 text-white text-sm font-semibold rounded-full mb-4">
+                    <i class="fas fa-chevron-right mr-2"></i> NORMATIVIDAD
+                </span>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Decretos de Alcaldía</h1>
+                <p class="text-gray-200 text-lg">Normatividad emitidos por la Alcaldía</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <div class="bg-gray-100 py-3 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center gap-2 text-sm">
+                <a href="index.html" class="text-muni-green hover:text-muni-accent transition">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+                <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                <span class="text-gray-600">Decretos de Alcaldía</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow py-12 md:py-16">
+        <div class="container mx-auto px-4">
+            
+            <!-- Tabla de Decretos de Alcaldía -->
+            <div class="bg-white rounded-2xl shadow-soft overflow-hidden border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                
+                <div class="table-container p-6">
+                    <table class="custom-table" id="decretos-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-calendar-alt mr-2"></i>Año</th>
+                                <th><i class="fas fa-heading mr-2"></i>Título</th>
+                                <th><i class="fas fa-align-left mr-2"></i>Descripción</th>
+                                <th><i class="fas fa-calendar mr-2"></i>Fecha</th>
+                                <th><i class="fas fa-file-pdf mr-2"></i>Archivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Decreto 1 -->
+                            <tr>
+                                <td><span class="year-badge">2025</span></td>
+                                <td class="font-semibold text-gray-900">Decreto de Alcaldía N.° 002-2025-MDC/A</td>
+                                <td>DISPONER EL EMBANDERAMIENTO GENERAL DEL DISTRITO DE CARHUAMAYO.</td>
+                                <td><i class="fas fa-calendar text-muni-green mr-1"></i>11/07/2025</td>
+                                <td>
+                                    <a href="documentos/6964166-decreto-de-alcaldia-n-002-2025-mdc.pdf" download class="download-btn">
+                                        <i class="fas fa-download"></i>
+                                        Descargar PDF
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="year-badge">2023</span></td>
+                                <td class="font-semibold text-gray-900">Decreto de Alcaldía N.° 002-2023-MDC/A</td>
+                                <td>APRUEBA EL REGLAMENTO DE ORGANIZACIÓN Y FUNCIONAMIENTO (ROF), CUADRO DE ASIGNACIÓN DE PERSONAL (CAP) Y LA ESTRUCTURA ORGÁNICA DE LA MUNICIPALIDAD DISTRITAL DE CARHUAMAYO.</td>
+                                <td><i class="fas fa-calendar text-muni-green mr-1"></i>09/05/2023</td>
+                                <td>
+                                    <a href="documentos/6416510-decreto-de-alcaldia-n02-2023-mdc-a.pdf" download class="download-btn">
+                                        <i class="fas fa-download"></i>
+                                        Descargar PDF
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td><span class="year-badge">2023</span></td>
+                                <td class="font-semibold text-gray-900">Decreto de Alcaldía N.° 001-2023-MDC/A</td>
+                                <td>RATIFICAR LA APROBACIÓN DEL REGLAMENTO INTERNO DE TRABAJO DE LA MUNICIPALIDAD DISTRITAL DE CARHUAMAYO.</td>
+                                <td><i class="fas fa-calendar text-muni-green mr-1"></i>06/03/2023</td>
+                                <td>
+                                    <a href="documentos/6416907-decreto-de-alcaldia-n-001-2023-mdc-a.pdf" download class="download-btn">
+                                        <i class="fas fa-download"></i>
+                                        Descargar PDF
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Nota informativa -->
+            <div class="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-info-circle text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-1">Nota Importante</h4>
+                        <p class="text-gray-600 text-sm">
+                            Los documentos aquí publicados son de carácter oficial. Para cualquier consulta o aclaración 
+                            sobre el contenido de los decrementos de Alcaldía, puede acercarse a la oficina de Alcaldía 
+                            o comunicarse al teléfono (01) 123-4567.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-muni-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Columna 1: Logo y descripción -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="img/carhuamayo logo.png" class="h-16 w-auto">
+                        <div>
+                            <h3 class="font-bold text-lg">Municipalidad Distrital<br>de Carhuamayo</h3>
+                            <p class="text-gray-400 text-sm">Junín, Perú</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Brindando servicios de calidad a todos los ciudadanos del distrito de Carhuamayo.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces rápidos -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Inicio</a></li>
+                        <li><a href="servicios.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Servicios</a></li>
+                        <li><a href="ordenanzas.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Ordenanzas</a></li>
+                        <li><a href="acuerdos-consejo.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Acuerdos</a></li>
+                        <li><a href="resoluciones-alcaldia.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Resoluciones</a></li>
+                        <li><a href="decretos-alcaldia.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Decretos</a></li>
+                        <li><a href="alcaldia.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Alcaldía</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Contacto -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contáctenos</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i class="fas fa-map-marker-alt text-muni-gold"></i>
+                            Jr. San Martín N° 100<br>Carhuamayo, Junín
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i class="fas fa-phone-alt text-muni-gold"></i>
+                            (01) 123-4567
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i class="fas fa-envelope text-muni-gold"></i>
+                            contacto@municarhuamayogob.pe
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Municipalidad Distrital de Carhuamayo. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>
