@@ -147,34 +147,52 @@
         </div>
     </div>
 
-    <!-- HEADER PRINCIPAL -->
-    <header class="glass-header sticky top-0 z-50 shadow-sm transition-all duration-300" id="main-header">
+    <!-- HEADER PRINCIPAL (Sticky y Glassmorphism) -->
+    <header class="glass-header sticky top-0 z-[999] shadow-sm transition-all duration-300" id="main-header">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-3">
+
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-3 group min-w-max">
+                <a href="#" class="flex items-center space-x-3 group min-w-max">
+
                     <div class="flex flex-col">
                         <img src="img/carhuamayo logo.png" class="h-12 w-auto object-contain">
                     </div>
                 </a>
 
-                <!-- Navegación Desktop -->
+                <!-- Navegación Desktop (CENTRADA) -->
+                <!-- SOLUCIÓN MENU: Se agrega un contenedor wrapper con pt-3 para crear el puente invisible -->
                 <nav class="hidden md:flex flex-1 justify-end lg:justify-center items-center space-x-1 ml-4 lg:ml-0">
+
                     <!-- Dropdown: La Municipalidad -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
-                            MUNICIPALIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            MUNICIPALIDAD <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
+                        <!-- Wrapper Invisible (Puente) -->
                         <div class="absolute top-full left-0 pt-3 w-64 hidden group-hover:block z-50">
-                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
-                                <a href="alcaldia.html" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
-                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-user-tie"></i></span> Alcaldia
+                            <!-- Contenido Visual -->
+                            <div
+                                class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 overflow-hidden ring-1 ring-black ring-opacity-5">
+                                <a href="alcaldia.html"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span
+                                        class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i
+                                            class="fas fa-user-tie"></i></span> Alcaldia
                                 </a>
-                                <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
-                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-bullseye"></i></span> Mision Y Vision
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/institucional" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <span
+                                        class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i
+                                            class="fas fa-user-tie"></i></span> Mision Y Vision
                                 </a>
-                                <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
-                                    <span class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i class="fas fa-building"></i></span> Direccion De La Municipalidad
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/sedes" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                    <span
+                                        class="w-8 h-8 rounded-full bg-blue-100 text-muni-green flex items-center justify-center mr-3"><i
+                                            class="fas fa-users"></i></span> Direccion De La Municipalidad
                                 </a>
                             </div>
                         </div>
@@ -182,31 +200,44 @@
 
                     <!-- Dropdown: Servicios -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
-                            SERVICIOS <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            SERVICIOS <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
+                        <!-- Wrapper Invisible -->
                         <div class="absolute top-full left-0 pt-3 w-72 hidden group-hover:block z-50">
-                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
-                                <a href="servicios.html" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                            <div
+                                class="bg-white shadow-soft rounded-xl border-t-4 border-muni-green pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="servicios.html"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-tasks w-6 text-muni-green"></i> Nuestros Servicios
                                 </a>
-                                
+
+                                <!-- Submenú Anidado -->
                                 <div class="relative group/libro">
-                                    <a href="libro-reclamaciones.html" class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-green text-sm border-b border-gray-50 transition flex justify-between items-center">
-                                        <span><i class="fas fa-book w-6 text-muni-green"></i> Libro De Reclamaciones</span>
+                                    <a href="libro-reclamaciones.html"
+                                        class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-green text-sm border-b border-gray-50 transition flex justify-between items-center">
+                                        <span><i class="fas fa-book w-6 text-muni-green"></i> Libro De
+                                            Reclamaciones</span>
                                         <i class="fas fa-chevron-right text-xs text-gray-400"></i>
                                     </a>
+                                    <!-- Submenú flotante -->
                                     <div class="absolute submenu-adjust w-60 hidden group-hover/libro:block z-50">
                                         <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-green">
-                                            <a href="https://reclamos.servicios.gob.pe/users/sign_in" target="_blank" class="block px-4 py-3 hover:bg-gray-50 text-sm text-gray-600 hover:text-muni-green transition">Administracion De Reclamos</a>
+                                            <a href="https://reclamos.servicios.gob.pe/users/sign_in" target="_blank"
+                                                class="block px-4 py-3 hover:bg-gray-50 text-sm text-gray-600 hover:text-muni-green transition">Administracion
+                                                De Reclamos</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                <a href="https://visitas.servicios.gob.pe/autenticacion/" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-laptop w-6 text-muni-green"></i> Registro de Visitas
                                 </a>
-                                <a href="https://facilita.gob.pe/t/5598" target="_blank" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                <a href="https://facilita.gob.pe/t/5598" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
                                     <i class="fas fa-book-open w-6 text-muni-green"></i> Mesa de Partes Virtual
                                 </a>
                             </div>
@@ -215,92 +246,53 @@
 
                     <!-- Dropdown: NORMATIVIDAD -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
-                            NORMATIVIDAD <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            NORMATIVIDAD <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
-                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-3 w-72 hidden group-hover:block z-50">
-                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-accent pt-2 ring-1 ring-black ring-opacity-5">
-                                <a href="#" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
-                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Documentos
+                        <!-- Wrapper Invisible (Centrado) -->
+                        <div
+                            class="absolute top-full left-1/2 transform -translate-x-1/2 pt-3 w-72 hidden group-hover:block z-50">
+                            <div
+                                class="bg-white shadow-soft rounded-xl border-t-4 border-muni-accent pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="ordenanzas.html"
+                                    class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Ordenanzas Municipales
+                                </a>
+                                <a href="acuerdos-consejo.html" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Acuerdos De Consejo
+                                </a>
+                                <a href="resoluciones-alcaldia.html"
+                                    class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Resoluciones De Alcaldia
+                                </a>
+                                <a href="decretos-alcaldia.html"
+                                    class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Decretos De Alcaldía
+                                </a>
+                                <a href="resoluciones-gerencia.html"
+                                    class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 transition">
+                                    <i class="fas fa-search-dollar w-6 text-muni-accent"></i> Resoluciones De Gerencia
                                 </a>
 
-                                <div class="relative group/libro">
-                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
-                                        <span><i class="fas fa-chart-line w-6 text-muni-accent"></i> Planes Y Politicas</span>
-                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
-                                    </button>
-                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
-                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent">
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan Estrategico Institucional-PEI</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan Operativo Institucional-POI</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Plan De Gobierno Digital</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="relative group/libro">
-                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
-                                        <span><i class="fas fa-file-contract w-6 text-muni-accent"></i> Instrumentos Gestión</span>
-                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
-                                    </button>
-                                    <div class="absolute submenu-adjust-left w-56 hidden group-hover/libro:block z-50">
-                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Clasificador De Cargos</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">POI</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">PIA</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">ROF</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">MOF</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">CAP</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">RASA Y CIEMA</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">MAPRO</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">TUPA</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">RIT</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="relative group/libro">
-                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
-                                        <span><i class="fas fa-gavel w-6 text-muni-accent"></i> Presupuesto</span>
-                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
-                                    </button>
-                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
-                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
-                                            <a href="https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_info_finan.aspx?id_entidad=11272&id_tema=19&ver=" target="_blank" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Información Presupuestal</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="relative group/libro">
-                                    <button class="w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-muni-accent text-sm border-b border-gray-50 transition flex justify-between items-center">
-                                        <span><i class="fas fa-gavel w-6 text-muni-accent"></i> Normas Emitidas</span>
-                                        <i class="fas fa-chevron-left text-xs text-gray-400"></i>
-                                    </button>
-                                    <div class="absolute submenu-adjust-left w-64 hidden group-hover/libro:block z-50">
-                                        <div class="bg-white shadow-soft rounded-xl border-l-4 border-muni-accent max-h-64 overflow-y-auto">
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Ordenanzas Municipales</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Resoluciones de Alcaldia</a>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs text-gray-600">Decretos de Alcaldía</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <a href="#" class="flex items-center px-4 py-3 hover:bg-red-50 text-sm text-gray-700 transition">
-                                    <i class="fas fa-exclamation-circle w-6 text-muni-accent"></i> Recomendaciones Auditoria
-                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Dropdown: Ciudad -->
+                    <!-- Dropdown: Carhuamayo -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
-                            CARHUAMAYO <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            CARHUAMAYO<i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
+                        <!-- Wrapper Invisible -->
                         <div class="absolute top-full right-0 pt-3 w-64 hidden group-hover:block z-50">
-                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-muni-gold pt-2 ring-1 ring-black ring-opacity-5">
-                                <a href="https://www.carhuamayo.site/" target="_blank" class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                            <div
+                                class="bg-white shadow-soft rounded-xl border-t-4 border-muni-gold pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="https://www.carhuamayo.site/" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-yellow-50 text-sm text-gray-700 transition">
                                     <i class="fas fa-camera w-6 text-muni-gold"></i> Historia De Carhuamayo
                                 </a>
                             </div>
@@ -309,18 +301,33 @@
 
                     <!-- Dropdown: Transparencia -->
                     <div class="relative group px-1">
-                        <button class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
-                            TRANSPARENCIA <i class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        <button
+                            class="px-3 py-2 text-sm font-semibold text-gray-600 hover:text-muni-green hover:bg-blue-50 rounded-lg transition flex items-center gap-1">
+                            TRANSPARENCIA <i
+                                class="fas fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
                         </button>
+                        <!-- Wrapper Invisible -->
                         <div class="absolute top-full right-0 pt-3 w-72 hidden group-hover:block z-50">
-                            <div class="bg-white shadow-soft rounded-xl border-t-4 border-gob-blue pt-2 ring-1 ring-black ring-opacity-5">
-                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                            <div
+                                class="bg-white shadow-soft rounded-xl border-t-4 border-gob-blue pt-2 ring-1 ring-black ring-opacity-5">
+                                <a href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=11272" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
                                     <i class="fas fa-laptop-code w-6 text-gob-blue"></i> Portal De Transparencia
                                 </a>
-                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
-                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> Agenda Institucional
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/contacto-y-numeros-de-emergencias?utm_source=chatgpt.com" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="fas fa-laptop-code w-6 text-gob-blue"></i> Seguridad Ciudadana
                                 </a>
-                                <a href="#" class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
+                                <a href="https://www.gob.pe/municarhuamayo" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> GOB.PE
+                                </a>
+                                <a href="https://www.gob.pe/institucion/municarhuamayo/normas-legales/7744085-003-2026-mdc-a-carhuamayo" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 border-b border-gray-50 transition">
+                                    <i class="far fa-calendar-alt w-6 text-gob-blue"></i> Presupuesto Participativo
+                                </a>
+                                <a href="https://denuncias.servicios.gob.pe/" target="_blank"
+                                    class="flex items-center px-4 py-3 hover:bg-blue-50 text-sm text-gray-700 transition">
                                     <i class="fas fa-bullhorn w-6 text-gob-blue"></i> Denunciar Actos De Corrupción
                                 </a>
                             </div>
@@ -329,33 +336,47 @@
                 </nav>
 
                 <!-- Botón Menú Móvil -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-blue-50 rounded-full transition">
+                <button id="mobile-menu-btn"
+                    class="md:hidden text-2xl text-muni-green focus:outline-none p-2 hover:bg-blue-50 rounded-full transition">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Menú Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 absolute w-full shadow-2xl overflow-y-auto max-h-[80vh] z-50">
-            <a href="index.html" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-home mr-2 text-muni-green"></i> Inicio</a>
-            
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white border-t border-gray-200 absolute w-full shadow-2xl overflow-y-auto max-h-[80vh] z-50 animate-dropdown">
+            <a href="#" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i
+                    class="fas fa-home mr-2 text-muni-green"></i> Inicio</a>
+
             <div class="border-b bg-gray-50">
                 <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Gestión</p>
-                <a href="alcaldia.html" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Alcaldía</a>
-                <a href="#" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Documentos de Gestión</a>
+                <a href="#alcalde"
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">El
+                    Alcalde</a>
+                <a href="#"
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Documentos
+                    de Gestión</a>
             </div>
 
             <div class="border-b bg-gray-50">
                 <p class="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Servicios</p>
-                <a href="index.html#servicios" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Trámites y TUPA</a>
-                <a href="#" class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Pagos en Línea</a>
+                <a href="#servicios"
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Trámites
+                    y TUPA</a>
+                <a href="#"
+                    class="block px-8 py-3 text-gray-600 hover:text-muni-green border-l-4 border-transparent hover:border-muni-green transition">Pagos
+                    en Línea</a>
             </div>
 
-            <a href="index.html#noticias" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="far fa-newspaper mr-2 text-muni-green"></i> Noticias</a>
-            <a href="index.html#turismo" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i class="fas fa-map-marked-alt mr-2 text-muni-green"></i> Turismo</a>
-            
+            <a href="#noticias" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i
+                    class="far fa-newspaper mr-2 text-muni-green"></i> Noticias</a>
+            <a href="#turismo" class="block px-6 py-4 text-gray-700 border-b font-semibold hover:bg-gray-50"><i
+                    class="fas fa-map-marked-alt mr-2 text-muni-green"></i> Turismo</a>
+
             <div class="p-4 bg-white">
-                <button class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform active:scale-95">
+                <button
+                    class="w-full text-center px-4 py-3 bg-muni-green text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg transform active:scale-95">
                     <i class="fas fa-laptop-file mr-2"></i> Mesa de Partes Virtual
                 </button>
             </div>
@@ -746,79 +767,111 @@
     <!-- FOOTER -->
     <footer id="contacto" class="bg-gray-900 text-gray-300 pt-20 pb-10 border-t-8 border-muni-green">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            
+
             <!-- Columna 1 -->
             <div data-aos="fade-up">
                 <div class="flex items-center space-x-3 mb-8 text-white">
                     
-                        <img src="img/carhuamayo logo.png" class="h-8 w-auto object-contain" class="h-12">
-                    
-                    <span class="font-bold text-2xl leading-tight tracking-tight">2023-2026
-                </div>
+                    <img src="img/carhuamayo logo.png" class="h-8 w-auto object-contain" class="h-12">
+                
+                <span class="font-bold text-2xl leading-tight tracking-tight">2023-2026
+            </div>
                 <p class="text-sm text-gray-400 mb-8 leading-relaxed">
-                    Institución pública comprometida con el desarrollo integral, sostenible y armónico de la provincia, brindando servicios de calidad.
+                    Institución pública comprometida con el desarrollo integral, sostenible y armónico de la provincia,
+                    brindando servicios de calidad.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-youtube"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition transform hover:-translate-y-1"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:-translate-y-1"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition transform hover:-translate-y-1"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition transform hover:-translate-y-1"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <!-- Columna 2 -->
             <div data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Enlaces de Interés</h3>
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Enlaces de
+                    Interés</h3>
                 <ul class="space-y-4 text-sm">
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Mesa de Partes Virtual</a></li>
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Portal de Transparencia</a></li>
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Convocatorias CAS</a></li>
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Ordenanzas Municipales</a></li>
-                    <li><a href="#" class="hover:text-muni-green transition flex items-center group"><i class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i> Directorio de Funcionarios</a></li>
+                    <li><a href="https://facilita.gob.pe/t/5598" target="_blank" class="hover:text-muni-green transition flex items-center group"><i
+                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
+                            Mesa de Partes Virtual</a></li>
+                    <li><a href="https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=11272" target="_blank" class="hover:text-muni-green transition flex items-center group"><i
+                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
+                            Portal de Transparencia</a></li>
+                    <li><a href="ordenanzas.html" target="_blank" class="hover:text-muni-green transition flex items-center group"><i
+                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
+                            Ordenanzas Municipales</a></li>
+                    <li><a href="alcaldia.html" target="_blank" class="hover:text-muni-green transition flex items-center group"><i
+                                class="fas fa-chevron-right text-xs mr-3 text-gray-600 group-hover:text-muni-green"></i>
+                            Directorio de Funcionarios</a></li>
                 </ul>
             </div>
 
             <!-- Columna 3 -->
             <div data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Contáctanos</h3>
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Contáctanos
+                </h3>
                 <ul class="space-y-6 text-sm">
                     <li class="flex items-start">
-                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-map-marker-alt"></i></div>
-                        <span>Jr. Ayacucho 123, Plaza de Armas,<br>Carhuamayo, Perú</span>
+                        <div
+                            class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <span>Jr. Ayacucho 161, Plaza de Armas,<br>Provincia, Perú</span>
                     </li>
                     <li class="flex items-center">
-                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-phone-alt"></i></div>
-                        <span>(01) 123-4567 / (01) 987-6543</span>
+                        <div
+                            class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <span> 064-345120</span>
                     </li>
                     <li class="flex items-center">
-                        <div class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green"><i class="fas fa-envelope"></i></div>
-                        <span>contacto@municarhuamayogob.pe</span>
+                        <div
+                            class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center shrink-0 mr-3 text-muni-green">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>sgmdc2326@gmail.com</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Columna 4 -->
             <div data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Atención al Vecino</h3>
+                <h3 class="text-white font-bold mb-8 text-lg border-b border-gray-700 pb-2 inline-block">Atención al
+                    Vecino</h3>
                 <p class="text-sm mb-4 text-gray-400">Horario de Oficina:</p>
                 <div class="bg-gray-800 p-4 rounded-lg mb-6 border-l-4 border-muni-gold">
                     <p class="text-white font-bold text-sm">Lunes a Viernes</p>
-                    <p class="text-gray-400 text-xs mt-1">8:00 AM - 1:00 PM</p>
-                    <p class="text-gray-400 text-xs">2:30 PM - 5:00 PM</p>
+                    <p class="text-gray-400 text-xs mt-1">8:00 AM - 12:30 PM</p>
+                    <p class="text-gray-400 text-xs">2:00 PM - 5:30 PM</p>
                 </div>
-                
-                <div class="mt-4 p-5 bg-gradient-to-r from-red-900 to-red-800 rounded-xl border border-red-700 shadow-lg transform hover:scale-105 transition duration-300">
-                    <p class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center"><i class="fas fa-exclamation-triangle mr-2 animate-pulse"></i> Emergencias (24h)</p>
-                    <p class="text-3xl font-black text-white tracking-widest">0-800-123</p>
+
+                <div
+                    class="mt-4 p-5 bg-gradient-to-r from-red-900 to-red-800 rounded-xl border border-red-700 shadow-lg transform hover:scale-105 transition duration-300">
+                    <p class="text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center"><i
+                            class="fas fa-exclamation-triangle mr-2 animate-pulse"></i> Emergencias (24h)</p>
+                    <p class="text-3xl font-black text-white tracking-widest">
+                        901790978</p>
                     <p class="text-xs text-red-200 mt-1">Seguridad Ciudadana</p>
                 </div>
             </div>
 
         </div>
-        
+
         <div class="border-t border-gray-800 pt-8">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2024 Municipalidad Distrital de Carhuamayo. Todos los derechos reservados.</p>
+            <div
+                class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2026 Municipalidad Provincial. Todos los derechos reservados.</p>
                 <div class="mt-4 md:mt-0 space-x-6">
                     <a href="#" class="hover:text-white transition">Políticas de Privacidad</a>
                     <a href="#" class="hover:text-white transition">Términos de Uso</a>
